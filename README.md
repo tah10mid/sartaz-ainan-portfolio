@@ -115,27 +115,25 @@ Then replace the `cdn.tailwindcss.com` script tag in `index.html` with
 
 ## ⚠️ Placeholders you still need to fill in
 
-Real content could not be auto-pulled (LinkedIn requires login; SSRN/Google Scholar/
-ResearchGate/YouTube block automated scraping or render via JavaScript). **Nothing was
-invented.** Search the code for `TODO` and replace these:
+Verified content was pulled from the **Google Scholar** profile (name, affiliation,
+research interests, and the SSRN paper title/authors/year) and is already filled in.
+**Nothing was invented.** LinkedIn (login-gated) and YouTube (JS-rendered) stayed
+blocked, so a few fields remain `TODO`:
 
-| Where (`index.html`)         | What to fill in                                              |
+| Where (`index.html`)         | Status / what to fill in                                    |
 | ---------------------------- | ----------------------------------------------------------- |
-| Hero tagline                 | Your title/tagline, e.g. "Researcher \| <field>"            |
-| Hero supporting sentence     | One-line intro                                              |
-| About bio                    | 2–4 sentence bio (from LinkedIn)                            |
-| Research Interests chips     | Your real interests (replace the 5 placeholders)           |
-| "What I do" cards            | Tailor the 3 descriptions (optional)                       |
-| Featured SSRN card           | Real paper **title**, **year**, and **summary**            |
-| Other publication cards      | Real titles / venues / years / summaries / DOI links       |
-| Media → YouTube cards        | Real `data-video-id` (11-char IDs) + video titles          |
-| Contact `mailto:`            | Your real email address                                    |
-| Contact form `action`        | Your Formspree endpoint (`YOUR_FORM_ID`)                   |
-| `<meta property="og:url">`   | Your live deployed URL                                     |
+| Hero tagline                 | ✅ Filled — "Materials & Metallurgical Engineering Researcher · BUET" |
+| About bio                    | ✅ Filled from Scholar facts — **expand** with a personal bio from LinkedIn |
+| Research Interests chips     | ✅ Filled from Scholar (Metallurgy, Semiconductors, Ceramics, Dielectric Materials, Steel Making) |
+| Featured SSRN card           | ✅ Filled — real title, authors, year                       |
+| "What I do" cards            | Tailor the 3 descriptions (optional)                        |
+| Media → YouTube cards        | **TODO** — real `data-video-id` (11-char IDs) + video titles |
+| Contact `mailto:`            | **TODO** — your real email address                          |
+| Contact form `action`        | **TODO** — your Formspree endpoint (`YOUR_FORM_ID`)         |
 
-All **social/profile links are already wired** to the URLs you provided (LinkedIn,
-Google Scholar, ResearchGate, YouTube, Instagram, Facebook) and the **SSRN paper link**
-points to `abstract_id=6215898`.
+All **social/profile links are wired** (LinkedIn, Google Scholar, ResearchGate, YouTube,
+Instagram, Facebook), the **SSRN paper link** points to `abstract_id=6215898`, and
+`<meta og:url>` is set to the live Vercel URL.
 
 ### Formspree setup (contact form)
 

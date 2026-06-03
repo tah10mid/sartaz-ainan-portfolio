@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================ SEO / META ============================ -->
+  <title>Sartaz Ainan — Researcher &amp; Content Creator</title>
+  <meta name="description"
+        content="Personal portfolio of Sartaz Ainan — academic researcher and content creator. Explore research, publications, and media." />
+  <meta name="author" content="Sartaz Ainan" />
+  <meta name="theme-color" content="#8B7BB8" />
+
+  <!-- Open Graph (social share) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sartaz Ainan — Researcher &amp; Content Creator" />
+  <meta property="og:description"
+        content="Personal portfolio of Sartaz Ainan — academic researcher and content creator. Explore research, publications, and media." />
+  <!-- TODO: replace with your live domain once deployed -->
+  <meta property="og:url" content="https://example.com/" />
+  <meta property="og:image" content="images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Portrait of Sartaz Ainan" />
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sartaz Ainan — Researcher &amp; Content Creator" />
+  <meta name="twitter:description"
+        content="Personal portfolio of Sartaz Ainan — academic researcher and content creator." />
+  <meta name="twitter:image" content="images/og-image.jpg" />
+
+  <!-- Favicons (SA monogram) -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+
+  <!-- ============================ FONTS ============================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+  <!-- ============================ TAILWIND (Play CDN, no build step) ============================ -->
+  <!-- NOTE: The Play CDN is great for prototypes/small sites. To ship compiled CSS instead,
+       see README.md ("Optional: compile Tailwind with the CLI"). -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Respect saved theme BEFORE paint to avoid a flash of the wrong theme.
+    if (localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            // Refined lavender/violet pulled from the lavender shirt
+            lavender: {
+              50:  '#f5f3fa',
+              100: '#ebe7f4',
+              200: '#d8d0e9',
+              300: '#bdaedb',
+              400: '#a08bc9',
+              500: '#8B7BB8', // accent
+              600: '#7766a3',
+              700: '#635486',
+              800: '#52466e',
+              900: '#443b5b',
+            },
+            ink: '#111111',
+          },
+          fontFamily: {
+            serif: ['Fraunces', 'Lora', 'Playfair Display', 'Georgia', 'serif'],
+            sans:  ['Inter', 'system-ui', 'sans-serif'],
+          },
+          maxWidth: { content: '1100px' },
+        },
+      },
+    };
+  </script>
+
+  <!-- Project styles & animation helpers -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="font-sans bg-white text-ink antialiased dark:bg-zinc-950 dark:text-zinc-100">
+
+  <!-- Skip link for keyboard / screen-reader users -->
+  <a href="#main"
+     class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100]
+            focus:rounded-lg focus:bg-lavender-600 focus:px-4 focus:py-2 focus:text-white">
+    Skip to content
+  </a>
+
+  <!-- ================================================================== -->
+  <!-- NAVBAR                                                             -->
+  <!-- ================================================================== -->
+  <header id="navbar"
+          class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300">
+    <nav class="mx-auto flex max-w-content items-center justify-between px-5 py-4 lg:px-8"
+         aria-label="Primary">
+      <!-- Brand -->
+      <a href="#hero" class="flex items-center gap-2 font-serif text-lg font-semibold tracking-tight">
+        <span class="grid h-8 w-8 place-items-center rounded-lg bg-lavender-500 text-sm font-bold text-white">SA</span>
+        Sartaz Ainan
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden items-center gap-1 md:flex">
+        <a href="#about"    class="nav-link" data-nav="about">About</a>
+        <a href="#research" class="nav-link" data-nav="research">Research</a>
+        <a href="#media"    class="nav-link" data-nav="media">Media</a>
+        <a href="#contact"  class="nav-link" data-nav="contact">Contact</a>
+
+        <!-- Dark-mode toggle -->
+        <button id="theme-toggle" type="button"
+                class="ml-2 grid h-9 w-9 place-items-center rounded-full text-zinc-600 transition
+                       hover:bg-lavender-100 hover:text-lavender-700
+                       dark:text-zinc-300 dark:hover:bg-zinc-800"
+                aria-label="Toggle dark mode">
+          <svg class="icon-sun h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+               viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" /><path stroke-linecap="round"
+              d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41" />
+          </svg>
+          <svg class="icon-moon hidden h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+               viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile controls -->
+      <div class="flex items-center gap-1 md:hidden">
+        <button id="theme-toggle-mobile" type="button"
+                class="grid h-9 w-9 place-items-center rounded-full text-zinc-600
+                       hover:bg-lavender-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                aria-label="Toggle dark mode">
+          <svg class="icon-sun h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+               viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" /><path stroke-linecap="round"
+              d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41" />
+          </svg>
+          <svg class="icon-moon hidden h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
+               viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+          </svg>
+        </button>
+        <button id="menu-btn" type="button"
+                class="grid h-9 w-9 place-items-center rounded-lg text-zinc-700 hover:bg-lavender-100
+                       dark:text-zinc-200 dark:hover:bg-zinc-800"
+                aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"
+               viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile dropdown -->
+    <div id="mobile-menu"
+         class="hidden border-t border-zinc-200 bg-white/95 backdrop-blur md:hidden
+                dark:border-zinc-800 dark:bg-zinc-950/95">
+      <div class="flex flex-col px-5 py-3">
+        <a href="#about"    class="mobile-link">About</a>
+        <a href="#research" class="mobile-link">Research</a>
+        <a href="#media"    class="mobile-link">Media</a>
+        <a href="#contact"  class="mobile-link">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ================================================================ -->
+    <!-- HERO                                                             -->
+    <!-- ================================================================ -->
+    <section id="hero" class="relative overflow-hidden scroll-mt-20 pt-28 pb-16 md:pt-36 md:pb-24">
+      <!-- soft decorative blobs -->
+      <div aria-hidden="true"
+           class="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-lavender-200/50 blur-3xl dark:bg-lavender-900/30"></div>
+      <div aria-hidden="true"
+           class="pointer-events-none absolute top-40 -left-24 h-64 w-64 rounded-full bg-lavender-100/60 blur-3xl dark:bg-lavender-800/20"></div>
+
+      <div class="mx-auto grid max-w-content items-center gap-10 px-5 lg:px-8 md:grid-cols-2">
+        <!-- Copy -->
+        <div class="reveal order-2 md:order-1">
+          <p class="mb-3 inline-flex items-center gap-2 rounded-full bg-lavender-100 px-3 py-1 text-sm font-medium text-lavender-700 dark:bg-lavender-900/40 dark:text-lavender-200">
+            <span class="h-2 w-2 rounded-full bg-lavender-500"></span>
+            Researcher &amp; Content Creator
+          </p>
+          <h1 class="font-serif text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+            Sartaz Ainan
+          </h1>
+          <!-- TODO: replace tagline, e.g. "Researcher | <your field>" -->
+          <p class="mt-4 text-lg font-medium text-lavender-700 dark:text-lavender-300">
+            <!-- TODO: paste tagline here -->Researcher | &lt;your field&gt;
+          </p>
+          <!-- TODO: replace supporting sentence / pull from LinkedIn -->
+          <p class="mt-4 max-w-xl text-base leading-relaxed text-zinc-600 dark:text-zinc-300">
+            <!-- TODO: paste a one-line supporting sentence here -->
+            Exploring ideas at the intersection of research and storytelling — bridging
+            rigorous academic work with accessible content for a wider audience.
+          </p>
+
+          <!-- CTAs -->
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#research"
+               class="inline-flex items-center gap-2 rounded-full bg-lavender-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-lavender-500/25 transition hover:bg-lavender-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lavender-500">
+              View Research
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5-5 5M6 12h12"/></svg>
+            </a>
+            <a href="#contact"
+               class="inline-flex items-center gap-2 rounded-full border border-zinc-300 px-6 py-3 text-sm font-semibold text-ink transition hover:border-lavender-400 hover:text-lavender-700 dark:border-zinc-700 dark:text-zinc-100 dark:hover:border-lavender-500 dark:hover:text-lavender-300">
+              Get in Touch
+            </a>
+          </div>
+
+          <!-- Social row -->
+          <ul class="mt-8 flex flex-wrap items-center gap-2" aria-label="Social profiles">
+            <!-- Icons injected by js/social.js to keep markup DRY -->
+            <li><a class="social-link" data-social="linkedin"    href="https://www.linkedin.com/in/sartaz-ainan-7b9882192" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a></li>
+            <li><a class="social-link" data-social="scholar"     href="https://share.google/XKenUMCxASmgEXVwu" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"></a></li>
+            <li><a class="social-link" data-social="researchgate" href="https://share.google/0mQhjcECUKkf9KYYe" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate"></a></li>
+            <li><a class="social-link" data-social="youtube"     href="https://youtube.com/@sartazainan1783" target="_blank" rel="noopener noreferrer" aria-label="YouTube"></a></li>
+            <li><a class="social-link" data-social="instagram"   href="https://instagram.com/sartaz.ainan" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a></li>
+            <li><a class="social-link" data-social="facebook"    href="https://share.google/tVUie7xv2gN7bTM7R" target="_blank" rel="noopener noreferrer" aria-label="Facebook"></a></li>
+          </ul>
+        </div>
+
+        <!-- Photo -->
+        <div class="reveal order-1 flex justify-center md:order-2 md:justify-end">
+          <div class="relative">
+            <!-- soft circular backdrop so the white-bg headshot reads on any section -->
+            <div aria-hidden="true"
+                 class="absolute inset-0 -z-10 scale-110 rounded-full bg-gradient-to-br from-lavender-200 to-lavender-100 blur-2xl dark:from-lavender-800/40 dark:to-lavender-900/20"></div>
+            <img src="images/professional-photo.jpg"
+                 srcset="images/professional-photo-480.jpg 480w, images/professional-photo.jpg 900w"
+                 sizes="(max-width: 768px) 280px, 360px"
+                 width="598" height="900" loading="eager" decoding="async"
+                 alt="Sartaz Ainan — a man in a black blazer and lavender shirt with glasses, arms crossed, smiling"
+                 class="relative w-64 rounded-[2rem] border-4 border-white object-cover shadow-2xl shadow-lavender-500/20 sm:w-72 dark:border-zinc-800" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- ABOUT                                                            -->
+    <!-- ================================================================ -->
+    <section id="about" class="scroll-mt-20 bg-lavender-50/60 py-20 dark:bg-zinc-900/40">
+      <div class="mx-auto max-w-content px-5 lg:px-8">
+        <div class="reveal mx-auto max-w-3xl text-center">
+          <p class="section-eyebrow">About</p>
+          <h2 class="section-title">A little about me</h2>
+        </div>
+
+        <div class="reveal mx-auto mt-8 max-w-3xl text-center text-lg leading-relaxed text-zinc-600 dark:text-zinc-300">
+          <!-- TODO: paste bio here (2–4 sentences). LinkedIn could not be scraped (login-gated). -->
+          <p>
+            I'm Sartaz Ainan, an academic researcher and content creator. I'm passionate about
+            turning careful research into clear, engaging ideas — whether that's a paper, a talk,
+            or a video. <!-- TODO: paste your real bio here -->
+          </p>
+        </div>
+
+        <!-- Research interests as chips -->
+        <div class="reveal mx-auto mt-10 max-w-3xl text-center">
+          <h3 class="mb-4 font-serif text-xl font-semibold">Research Interests</h3>
+          <ul class="flex flex-wrap justify-center gap-2">
+            <!-- TODO: replace these placeholder interests with your real ones -->
+            <li class="chip">Research Interest 1</li>
+            <li class="chip">Research Interest 2</li>
+            <li class="chip">Research Interest 3</li>
+            <li class="chip">Research Interest 4</li>
+            <li class="chip">Research Interest 5</li>
+          </ul>
+        </div>
+
+        <!-- "What I do" cards -->
+        <div class="reveal mt-14 grid gap-6 sm:grid-cols-3">
+          <article class="card">
+            <div class="card-icon">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.25c-1.5-1.2-3.5-1.75-5.5-1.5v12c2-.25 4 .3 5.5 1.5m0-12c1.5-1.2 3.5-1.75 5.5-1.5v12c-2-.25-4 .3-5.5 1.5m0-12v12"/></svg>
+            </div>
+            <h3 class="mt-4 font-serif text-lg font-semibold">Research</h3>
+            <!-- TODO: tailor this description -->
+            <p class="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              Conducting and publishing rigorous, peer-reviewed academic work.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-icon">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m15.5 9.5 4-2.5v10l-4-2.5M3 7.5h12v9H3z"/></svg>
+            </div>
+            <h3 class="mt-4 font-serif text-lg font-semibold">Content Creation</h3>
+            <!-- TODO: tailor this description -->
+            <p class="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              Sharing ideas through video and social media to reach a wider audience.
+            </p>
+          </article>
+          <article class="card">
+            <div class="card-icon">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M10 10a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm11 10v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg>
+            </div>
+            <h3 class="mt-4 font-serif text-lg font-semibold">Collaboration</h3>
+            <!-- TODO: tailor this description -->
+            <p class="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              Open to working with peers, collaborators, and institutions on new projects.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- RESEARCH / PUBLICATIONS                                          -->
+    <!-- ================================================================ -->
+    <section id="research" class="scroll-mt-20 py-20">
+      <div class="mx-auto max-w-content px-5 lg:px-8">
+        <div class="reveal mx-auto max-w-3xl text-center">
+          <p class="section-eyebrow">Research</p>
+          <h2 class="section-title">Publications &amp; Working Papers</h2>
+          <p class="mt-3 text-zinc-600 dark:text-zinc-300">
+            A selection of my academic work. <!-- TODO: verify / complete titles & details below -->
+          </p>
+        </div>
+
+        <div class="reveal mt-12 grid gap-6 md:grid-cols-2">
+
+          <!-- FEATURED: SSRN paper (spans full width) -->
+          <article class="card md:col-span-2 md:flex md:items-start md:gap-6 border-lavender-200 dark:border-lavender-900/60">
+            <div class="hidden shrink-0 md:block">
+              <div class="grid h-16 w-16 place-items-center rounded-2xl bg-lavender-500 text-white">
+                <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.25c-1.5-1.2-3.5-1.75-5.5-1.5v12c2-.25 4 .3 5.5 1.5m0-12c1.5-1.2 3.5-1.75 5.5-1.5v12c-2-.25-4 .3-5.5 1.5m0-12v12"/></svg>
+              </div>
+            </div>
+            <div class="md:flex-1">
+              <span class="inline-flex items-center gap-1 rounded-full bg-lavender-100 px-2.5 py-0.5 text-xs font-semibold text-lavender-700 dark:bg-lavender-900/40 dark:text-lavender-200">★ Featured</span>
+              <!-- TODO: paste the real SSRN paper title (SSRN blocked automated scraping) -->
+              <h3 class="mt-2 font-serif text-xl font-semibold leading-snug">
+                &lt;SSRN Paper Title&gt; <!-- TODO: paste title -->
+              </h3>
+              <p class="mt-1 text-sm font-medium text-lavender-700 dark:text-lavender-300">
+                SSRN Working Paper · <!-- TODO: year --> &lt;Year&gt;
+              </p>
+              <!-- TODO: paste a 1–2 line summary / abstract excerpt -->
+              <p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+                A 1–2 line summary of the paper goes here. <!-- TODO: paste summary -->
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6215898" target="_blank" rel="noopener noreferrer" class="pub-btn pub-btn-primary">Read on SSRN</a>
+                <!-- TODO: add DOI link if/when available -->
+                <a href="https://share.google/XKenUMCxASmgEXVwu" target="_blank" rel="noopener noreferrer" class="pub-btn">Google Scholar</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Placeholder publication cards — duplicate/remove as needed -->
+          <article class="card">
+            <!-- TODO: replace with a real publication -->
+            <h3 class="font-serif text-lg font-semibold leading-snug">&lt;Publication Title&gt;</h3>
+            <p class="mt-1 text-sm font-medium text-lavender-700 dark:text-lavender-300">&lt;Venue&gt; · &lt;Year&gt;</p>
+            <p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              Short summary of this publication. <!-- TODO: paste summary -->
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <a href="#" class="pub-btn">DOI</a>
+              <a href="https://share.google/XKenUMCxASmgEXVwu" target="_blank" rel="noopener noreferrer" class="pub-btn">Scholar</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <!-- TODO: replace with a real publication -->
+            <h3 class="font-serif text-lg font-semibold leading-snug">&lt;Publication Title&gt;</h3>
+            <p class="mt-1 text-sm font-medium text-lavender-700 dark:text-lavender-300">&lt;Venue&gt; · &lt;Year&gt;</p>
+            <p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              Short summary of this publication. <!-- TODO: paste summary -->
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <a href="#" class="pub-btn">DOI</a>
+              <a href="https://share.google/0mQhjcECUKkf9KYYe" target="_blank" rel="noopener noreferrer" class="pub-btn">ResearchGate</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- View-all links -->
+        <div class="reveal mt-10 flex flex-wrap justify-center gap-4">
+          <a href="https://share.google/XKenUMCxASmgEXVwu" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-sm font-semibold text-lavender-700 hover:text-lavender-900 dark:text-lavender-300 dark:hover:text-lavender-100">
+            View all on Google Scholar
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+          <a href="https://share.google/0mQhjcECUKkf9KYYe" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-sm font-semibold text-lavender-700 hover:text-lavender-900 dark:text-lavender-300 dark:hover:text-lavender-100">
+            View all on ResearchGate
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- MEDIA / CONTENT                                                  -->
+    <!-- ================================================================ -->
+    <section id="media" class="scroll-mt-20 bg-lavender-50/60 py-20 dark:bg-zinc-900/40">
+      <div class="mx-auto max-w-content px-5 lg:px-8">
+        <div class="reveal mx-auto max-w-3xl text-center">
+          <p class="section-eyebrow">Media</p>
+          <h2 class="section-title">Content &amp; Creations</h2>
+          <p class="mt-3 text-zinc-600 dark:text-zinc-300">
+            Latest from my YouTube channel and socials.
+          </p>
+        </div>
+
+        <!-- YouTube thumbnails -->
+        <!-- TODO: YouTube channel is JS-rendered and could not be scraped automatically.
+             Replace each VIDEO_ID below with a real 11-character YouTube video ID.
+             The thumbnail and link update automatically from the data-video-id attribute. -->
+        <div class="reveal mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <a class="yt-card" data-video-id="VIDEO_ID_1" target="_blank" rel="noopener noreferrer">
+            <div class="yt-thumb"><span class="yt-play" aria-hidden="true"></span></div>
+            <h3 class="mt-3 font-medium leading-snug">&lt;Video title 1&gt;</h3> <!-- TODO: paste title -->
+          </a>
+          <a class="yt-card" data-video-id="VIDEO_ID_2" target="_blank" rel="noopener noreferrer">
+            <div class="yt-thumb"><span class="yt-play" aria-hidden="true"></span></div>
+            <h3 class="mt-3 font-medium leading-snug">&lt;Video title 2&gt;</h3> <!-- TODO: paste title -->
+          </a>
+          <a class="yt-card" data-video-id="VIDEO_ID_3" target="_blank" rel="noopener noreferrer">
+            <div class="yt-thumb"><span class="yt-play" aria-hidden="true"></span></div>
+            <h3 class="mt-3 font-medium leading-snug">&lt;Video title 3&gt;</h3> <!-- TODO: paste title -->
+          </a>
+        </div>
+
+        <!-- Social links -->
+        <div class="reveal mt-10 flex flex-wrap justify-center gap-3">
+          <a href="https://youtube.com/@sartazainan1783" target="_blank" rel="noopener noreferrer" class="media-link">
+            <span data-social="youtube" class="media-link-icon"></span> YouTube Channel
+          </a>
+          <a href="https://instagram.com/sartaz.ainan" target="_blank" rel="noopener noreferrer" class="media-link">
+            <span data-social="instagram" class="media-link-icon"></span> Instagram
+          </a>
+          <a href="https://share.google/tVUie7xv2gN7bTM7R" target="_blank" rel="noopener noreferrer" class="media-link">
+            <span data-social="facebook" class="media-link-icon"></span> Facebook
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- CONTACT                                                          -->
+    <!-- ================================================================ -->
+    <section id="contact" class="scroll-mt-20 py-20">
+      <div class="mx-auto max-w-content px-5 lg:px-8">
+        <div class="reveal mx-auto max-w-2xl text-center">
+          <p class="section-eyebrow">Contact</p>
+          <h2 class="section-title">Let's connect</h2>
+          <p class="mt-3 text-zinc-600 dark:text-zinc-300">
+            Whether you're a peer, collaborator, or recruiter — I'd love to hear from you.
+          </p>
+
+          <!-- mailto button -->
+          <!-- TODO: replace with your real email address -->
+          <a href="mailto:your-email@example.com"
+             class="mt-8 inline-flex items-center gap-2 rounded-full bg-lavender-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-lavender-500/25 transition hover:bg-lavender-600">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9 6 9-6M4 5h16v14H4z"/></svg>
+            your-email@example.com
+          </a>
+
+          <!-- social links -->
+          <ul class="mt-6 flex flex-wrap items-center justify-center gap-2" aria-label="Social profiles">
+            <li><a class="social-link" data-social="linkedin"    href="https://www.linkedin.com/in/sartaz-ainan-7b9882192" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a></li>
+            <li><a class="social-link" data-social="scholar"     href="https://share.google/XKenUMCxASmgEXVwu" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"></a></li>
+            <li><a class="social-link" data-social="researchgate" href="https://share.google/0mQhjcECUKkf9KYYe" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate"></a></li>
+            <li><a class="social-link" data-social="youtube"     href="https://youtube.com/@sartazainan1783" target="_blank" rel="noopener noreferrer" aria-label="YouTube"></a></li>
+            <li><a class="social-link" data-social="instagram"   href="https://instagram.com/sartaz.ainan" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a></li>
+            <li><a class="social-link" data-social="facebook"    href="https://share.google/tVUie7xv2gN7bTM7R" target="_blank" rel="noopener noreferrer" aria-label="Facebook"></a></li>
+          </ul>
+        </div>
+
+        <!-- Optional contact form (Formspree) -->
+        <!-- TODO: replace YOUR_FORM_ID with your Formspree endpoint (https://formspree.io). -->
+        <form id="contact-form"
+              action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
+              class="reveal mx-auto mt-12 max-w-xl rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-8">
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="name" class="form-label">Name</label>
+              <input id="name" name="name" type="text" required autocomplete="name" class="form-input" placeholder="Your name" />
+            </div>
+            <div>
+              <label for="email" class="form-label">Email</label>
+              <input id="email" name="email" type="email" required autocomplete="email" class="form-input" placeholder="you@example.com" />
+            </div>
+          </div>
+          <div class="mt-4">
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" name="message" rows="4" required class="form-input resize-y" placeholder="Write your message…"></textarea>
+          </div>
+          <button type="submit"
+                  class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-lavender-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-lavender-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lavender-500">
+            Send Message
+          </button>
+          <p id="form-status" role="status" aria-live="polite" class="mt-3 text-center text-sm"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================================================================ -->
+  <!-- FOOTER                                                            -->
+  <!-- ================================================================ -->
+  <footer class="border-t border-zinc-200 py-10 dark:border-zinc-800">
+    <div class="mx-auto flex max-w-content flex-col items-center gap-6 px-5 lg:px-8 md:flex-row md:justify-between">
+      <p class="flex items-center gap-2 font-serif text-sm">
+        <span class="grid h-7 w-7 place-items-center rounded-md bg-lavender-500 text-xs font-bold text-white">SA</span>
+        © <span id="year"></span> Sartaz Ainan
+      </p>
+
+      <nav class="flex gap-5 text-sm text-zinc-500 dark:text-zinc-400" aria-label="Footer">
+        <a href="#about" class="hover:text-lavender-700 dark:hover:text-lavender-300">About</a>
+        <a href="#research" class="hover:text-lavender-700 dark:hover:text-lavender-300">Research</a>
+        <a href="#media" class="hover:text-lavender-700 dark:hover:text-lavender-300">Media</a>
+        <a href="#contact" class="hover:text-lavender-700 dark:hover:text-lavender-300">Contact</a>
+      </nav>
+
+      <ul class="flex items-center gap-2" aria-label="Social profiles">
+        <li><a class="social-link social-link-sm" data-social="linkedin"    href="https://www.linkedin.com/in/sartaz-ainan-7b9882192" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a></li>
+        <li><a class="social-link social-link-sm" data-social="scholar"     href="https://share.google/XKenUMCxASmgEXVwu" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"></a></li>
+        <li><a class="social-link social-link-sm" data-social="youtube"     href="https://youtube.com/@sartazainan1783" target="_blank" rel="noopener noreferrer" aria-label="YouTube"></a></li>
+        <li><a class="social-link social-link-sm" data-social="instagram"   href="https://instagram.com/sartaz.ainan" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a></li>
+        <li><a class="social-link social-link-sm" data-social="facebook"    href="https://share.google/tVUie7xv2gN7bTM7R" target="_blank" rel="noopener noreferrer" aria-label="Facebook"></a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/icons.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

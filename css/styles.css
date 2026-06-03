@@ -1,0 +1,160 @@
+/* =========================================================================
+   Sartaz Ainan — Portfolio styles
+   Tailwind utility classes do most of the work in index.html.
+   This file holds: reusable component classes (@apply), small custom
+   utilities, scroll-reveal animation, and accessibility tweaks.
+   ========================================================================= */
+
+/* ---- Base ------------------------------------------------------------- */
+:root {
+  --accent: #8B7BB8;
+}
+
+/* Nicer default text rendering for the serif headings */
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+
+/* Honor users who ask for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* ---- Visible focus styles (accessibility) ----------------------------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* =========================================================================
+   Reusable component classes
+   The Tailwind Play CDN supports @apply at runtime, so these compile in
+   the browser. (If you switch to the Tailwind CLI build, these still work.)
+   ========================================================================= */
+
+/* ---- Navbar links + scroll-spy active state --------------------------- */
+.nav-link {
+  @apply rounded-full px-3.5 py-2 text-sm font-medium text-zinc-600 transition
+         hover:bg-lavender-100 hover:text-lavender-700
+         dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-lavender-200;
+}
+.nav-link.is-active {
+  @apply bg-lavender-100 text-lavender-700 dark:bg-zinc-800 dark:text-lavender-200;
+}
+
+.mobile-link {
+  @apply rounded-lg px-3 py-3 text-base font-medium text-zinc-700 transition
+         hover:bg-lavender-100 hover:text-lavender-700
+         dark:text-zinc-200 dark:hover:bg-zinc-800;
+}
+
+/* Navbar background once the page is scrolled (toggled by JS) */
+#navbar.scrolled {
+  @apply border-zinc-200/80 bg-white/80 shadow-sm backdrop-blur-md
+         dark:border-zinc-800/80 dark:bg-zinc-950/80;
+}
+
+/* ---- Section headings ------------------------------------------------- */
+.section-eyebrow {
+  @apply mb-2 text-sm font-semibold uppercase tracking-widest text-lavender-600 dark:text-lavender-400;
+}
+.section-title {
+  @apply font-serif text-3xl font-semibold tracking-tight sm:text-4xl;
+}
+
+/* ---- Cards ------------------------------------------------------------ */
+.card {
+  @apply rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition
+         hover:-translate-y-1 hover:shadow-lg hover:shadow-lavender-500/10
+         dark:border-zinc-800 dark:bg-zinc-900;
+}
+.card-icon {
+  @apply grid h-12 w-12 place-items-center rounded-xl bg-lavender-100 text-lavender-600
+         dark:bg-lavender-900/40 dark:text-lavender-300;
+}
+
+/* ---- Research-interest chips ------------------------------------------ */
+.chip {
+  @apply rounded-full border border-lavender-200 bg-lavender-50 px-4 py-1.5 text-sm font-medium
+         text-lavender-700 dark:border-lavender-900/60 dark:bg-lavender-900/30 dark:text-lavender-200;
+}
+
+/* ---- Publication buttons ---------------------------------------------- */
+.pub-btn {
+  @apply inline-flex items-center gap-1.5 rounded-full border border-zinc-300 px-4 py-1.5 text-xs
+         font-semibold text-zinc-700 transition hover:border-lavender-400 hover:text-lavender-700
+         dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-lavender-500 dark:hover:text-lavender-300;
+}
+.pub-btn-primary {
+  @apply border-transparent bg-lavender-500 text-white hover:bg-lavender-600 hover:text-white;
+}
+
+/* ---- Social icon links ------------------------------------------------ */
+.social-link {
+  @apply grid h-10 w-10 place-items-center rounded-full border border-zinc-200 text-zinc-600
+         transition hover:-translate-y-0.5 hover:border-lavender-400 hover:bg-lavender-50 hover:text-lavender-700
+         dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-lavender-500 dark:hover:bg-zinc-800;
+}
+.social-link svg { @apply h-5 w-5; }
+.social-link-sm { @apply h-9 w-9; }
+.social-link-sm svg { @apply h-4 w-4; }
+
+/* ---- Media links + YouTube cards -------------------------------------- */
+.media-link {
+  @apply inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-white px-5 py-2.5 text-sm
+         font-semibold text-zinc-700 transition hover:border-lavender-400 hover:text-lavender-700
+         dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-lavender-500;
+}
+.media-link-icon { @apply inline-grid h-5 w-5 place-items-center text-lavender-600 dark:text-lavender-300; }
+.media-link-icon svg { @apply h-5 w-5; }
+
+.yt-card {
+  @apply block rounded-2xl border border-zinc-200 bg-white p-3 shadow-sm transition
+         hover:-translate-y-1 hover:shadow-lg hover:shadow-lavender-500/10
+         dark:border-zinc-800 dark:bg-zinc-900;
+}
+.yt-thumb {
+  @apply relative grid aspect-video place-items-center overflow-hidden rounded-xl
+         bg-gradient-to-br from-lavender-200 to-lavender-100 bg-cover bg-center
+         dark:from-lavender-900/40 dark:to-zinc-800;
+}
+/* Play button overlay */
+.yt-play {
+  @apply grid h-14 w-14 place-items-center rounded-full bg-black/60 text-white transition;
+}
+.yt-play::after {
+  content: "";
+  margin-left: 3px;
+  border-style: solid;
+  border-width: 9px 0 9px 15px;
+  border-color: transparent transparent transparent #fff;
+}
+.yt-card:hover .yt-play { @apply scale-110 bg-red-600; }
+
+/* ---- Contact form ----------------------------------------------------- */
+.form-label {
+  @apply mb-1.5 block text-left text-sm font-medium text-zinc-700 dark:text-zinc-300;
+}
+.form-input {
+  @apply w-full rounded-xl border border-zinc-300 bg-white px-4 py-2.5 text-sm text-ink
+         transition placeholder:text-zinc-400 focus:border-lavender-400 focus:ring-2 focus:ring-lavender-200
+         dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:focus:ring-lavender-900;
+}
+
+/* =========================================================================
+   Scroll-reveal animation (driven by IntersectionObserver in main.js)
+   ========================================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}

@@ -1,8 +1,11 @@
 # Sartaz Ainan — Personal Portfolio
 
-A polished, fully responsive single-page portfolio for **Sartaz Ainan**, an academic
-researcher and content creator. Built with semantic **HTML5**, **Tailwind CSS**, and
-**vanilla JavaScript** — no framework, no backend, no build step required.
+A polished, fully responsive single-page portfolio for **Sartaz Ainan** — Materials &
+Metallurgical Engineer and content creator. Built with semantic **HTML5**, **Tailwind CSS**
+(compiled to a static stylesheet), and **vanilla JavaScript** — no framework, no backend.
+
+> **Hosting needs no build step:** the compiled `css/app.css` is committed, so you can drag
+> the folder to any static host as-is. The build step is only needed when you *change styles*.
 
 > **Design:** light theme, lavender/violet accent (`#8B7BB8`) pulled from the shirt in the
 > hero photo, elegant serif headings (Fraunces) + clean sans body (Inter), soft shadows,
@@ -14,12 +17,16 @@ researcher and content creator. Built with semantic **HTML5**, **Tailwind CSS**,
 
 ```
 sartaz-ainan-portfolio/
-├── index.html              # the whole page (all sections) + inline <style> blocks
-│                           #   (custom component classes live in a
-│                           #    <style type="text/tailwindcss"> block — see note below)
+├── index.html              # the whole page (all sections); links to css/app.css
+├── css/
+│   └── app.css             # COMPILED Tailwind output (committed; do not edit by hand)
+├── src/
+│   └── input.css           # Tailwind source: @tailwind directives + @apply components
+├── tailwind.config.js      # palette (lavender/ink), fonts, content globs
+├── package.json            # build/watch scripts + tailwindcss devDependency
 ├── js/
 │   ├── icons.js            # inline SVG social/brand icons (no icon CDN)
-│   └── main.js             # dark mode, mobile menu, scroll-spy, reveal, form, YouTube
+│   └── main.js             # dark mode, mobile menu, scroll-spy, reveal, contact form
 ├── images/
 │   ├── professional-photo.jpg       # web-optimized hero headshot (~36 KB)
 │   ├── professional-photo-480.jpg   # smaller variant for mobile (srcset)
@@ -27,6 +34,7 @@ sartaz-ainan-portfolio/
 │   ├── favicon.svg                  # "SA" monogram favicon (scalable)
 │   ├── favicon-32.png               # PNG fallback
 │   └── apple-touch-icon.png         # 180×180 iOS home-screen icon
+├── vercel.json             # Vercel build config (runs `npm run build`)
 └── README.md
 ```
 
@@ -55,32 +63,26 @@ npx serve .
 
 ## Tech / hosting notes
 
-- **Tailwind via the Play CDN.** The `<script src="https://cdn.tailwindcss.com">` tag
-  compiles utilities in the browser, so there is **no build step** — just upload the files.
-  This is ideal for a small personal site. The trade-off is a small runtime cost and a
-  console note that the CDN isn't for production. If you'd rather ship compiled CSS, see
-  the next section.
-- **Custom component classes** (`.card`, `.chip`, `.yt-thumb`, …) use Tailwind's `@apply`.
-  The Play CDN only processes `@apply` inside an inline `<style type="text/tailwindcss">`
-  block — **not** in an externally-linked `.css` file — so those rules live in `index.html`.
+- **Tailwind is compiled to a static file** (`css/app.css`) with the Tailwind CLI — no
+  runtime CDN, so styling is instant and deterministic (no flash, no console warning).
+- **Custom component classes** (`.card`, `.chip`, `.yt-card`, …) use Tailwind's `@apply`
+  and live in `src/input.css`; the palette/fonts live in `tailwind.config.js`.
 - Hosts for free with zero configuration on **Netlify**, **GitHub Pages**, or **Vercel**.
+  Because `css/app.css` is committed, none of them strictly need to run the build.
 
-### Optional: compile Tailwind with the CLI (removes the CDN)
+### Editing styles (rebuild the CSS)
 
-If you prefer a precompiled stylesheet:
+If you change any Tailwind classes or the component styles, rebuild the stylesheet:
 
 ```bash
-npm install -D tailwindcss
-npx tailwindcss init
-# Point `content` at ["./index.html", "./js/**/*.js"] and move the
-# tailwind.config theme block from index.html into tailwind.config.js.
-# Create src/input.css with: @tailwind base; @tailwind components; @tailwind utilities;
-# plus the @apply rules currently in the <style type="text/tailwindcss"> block in index.html.
-npx tailwindcss -i ./src/input.css -o ./css/tailwind.css --minify
+npm install          # first time only — installs the tailwindcss dev dependency
+npm run build        # writes css/app.css (minified)
+# or, while developing:
+npm run watch        # rebuilds on every save
 ```
 
-Then replace the `cdn.tailwindcss.com` script tag in `index.html` with
-`<link rel="stylesheet" href="css/tailwind.css">`.
+Then commit the updated `css/app.css`. (Tailwind only includes classes it finds in
+`index.html` / `js/**/*.js`, per the `content` globs in `tailwind.config.js`.)
 
 ---
 
@@ -132,7 +134,7 @@ blocked, so a few fields remain `TODO`:
 | Experience / Skills / Leadership | ✅ Filled from your CV (Anwar Ispat, internships, labs, BUET Career Club, etc.) |
 | Research & Projects          | ✅ Filled — thesis (SSRN/ICME) + 4 projects                  |
 | Contact emails / phone / location | ✅ Filled — emails, +880 1553-064653, Dhaka, Bangladesh |
-| Media → YouTube cards        | **TODO** — real `data-video-id` (11-char IDs) + video titles |
+| Media → YouTube cards        | ✅ Filled — 3 real videos (thumbnails pulled from the channel feed) |
 | Contact form `action`        | **TODO** — your Formspree endpoint (`YOUR_FORM_ID`)         |
 
 > **Privacy:** full street/permanent home addresses and your referees' phone numbers were

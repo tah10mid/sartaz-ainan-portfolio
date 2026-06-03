@@ -98,24 +98,6 @@
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  /* ---- YouTube thumbnails -------------------------------------------- */
-  // Each .yt-card has data-video-id. We set the thumbnail image + watch link.
-  // Cards whose ID is still a placeholder (contains "VIDEO_ID") are skipped
-  // so the lavender gradient + play button shows instead of a broken image.
-  document.querySelectorAll('.yt-card').forEach(function (card) {
-    const id = card.getAttribute('data-video-id');
-    if (!id || id.indexOf('VIDEO_ID') !== -1) return; // still a placeholder
-    card.setAttribute('href', 'https://www.youtube.com/watch?v=' + id);
-    const thumb = card.querySelector('.yt-thumb');
-    if (thumb) {
-      thumb.style.backgroundImage = 'url(https://i.ytimg.com/vi/' + id + '/hqdefault.jpg)';
-    }
-  });
-  // Give placeholder cards a non-broken href.
-  document.querySelectorAll('.yt-card:not([href])').forEach(function (card) {
-    card.setAttribute('href', 'https://youtube.com/@sartazainan1783');
-  });
-
   /* ---- Contact form (Formspree, AJAX) -------------------------------- */
   const form = document.getElementById('contact-form');
   const status = document.getElementById('form-status');

@@ -40,159 +40,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
 
-  <!-- ============================ TAILWIND (Play CDN, no build step) ============================ -->
-  <!-- NOTE: The Play CDN is great for prototypes/small sites. To ship compiled CSS instead,
-       see README.md ("Optional: compile Tailwind with the CLI"). -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- ============================ TAILWIND (compiled — no runtime CDN) ============================ -->
+  <!-- Styles are precompiled to css/app.css via the Tailwind CLI: `npm run build`.
+       Palette, fonts and component classes live in tailwind.config.js + src/input.css. -->
+  <link rel="stylesheet" href="css/app.css" />
   <script>
     // Respect saved theme BEFORE paint to avoid a flash of the wrong theme.
     if (localStorage.theme === 'dark' ||
         (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            // Refined lavender/violet pulled from the lavender shirt
-            lavender: {
-              50:  '#f5f3fa',
-              100: '#ebe7f4',
-              200: '#d8d0e9',
-              300: '#bdaedb',
-              400: '#a08bc9',
-              500: '#8B7BB8', // accent
-              600: '#7766a3',
-              700: '#635486',
-              800: '#52466e',
-              900: '#443b5b',
-            },
-            ink: '#111111',
-          },
-          fontFamily: {
-            serif: ['Fraunces', 'Lora', 'Playfair Display', 'Georgia', 'serif'],
-            sans:  ['Inter', 'system-ui', 'sans-serif'],
-          },
-          maxWidth: { content: '1100px' },
-        },
-      },
-    };
   </script>
 
-  <!-- Project styles & animation helpers.
-       IMPORTANT: with the Tailwind *Play CDN*, @apply only works inside a
-       <style type="text/tailwindcss"> block (an external .css file is NOT
-       processed by the CDN). All custom component classes therefore live here. -->
-  <style type="text/tailwindcss">
-    :root { --accent: #8B7BB8; }
-
-    /* ---- Navbar links + scroll-spy active state ---- */
-    .nav-link {
-      @apply rounded-full px-3.5 py-2 text-sm font-medium text-zinc-600 transition
-             hover:bg-lavender-100 hover:text-lavender-700
-             dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-lavender-200;
-    }
-    .nav-link.is-active { @apply bg-lavender-100 text-lavender-700 dark:bg-zinc-800 dark:text-lavender-200; }
-    .mobile-link {
-      @apply rounded-lg px-3 py-3 text-base font-medium text-zinc-700 transition
-             hover:bg-lavender-100 hover:text-lavender-700 dark:text-zinc-200 dark:hover:bg-zinc-800;
-    }
-    #navbar.scrolled {
-      @apply border-zinc-200/80 bg-white/80 shadow-sm backdrop-blur-md
-             dark:border-zinc-800/80 dark:bg-zinc-950/80;
-    }
-
-    /* ---- Section headings ---- */
-    .section-eyebrow { @apply mb-2 text-sm font-semibold uppercase tracking-widest text-lavender-600 dark:text-lavender-400; }
-    .section-title   { @apply font-serif text-3xl font-semibold tracking-tight sm:text-4xl; }
-
-    /* ---- Cards ---- */
-    .card {
-      @apply rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition
-             hover:-translate-y-1 hover:shadow-lg hover:shadow-lavender-500/10
-             dark:border-zinc-800 dark:bg-zinc-900;
-    }
-    .card-icon { @apply grid h-12 w-12 place-items-center rounded-xl bg-lavender-100 text-lavender-600 dark:bg-lavender-900/40 dark:text-lavender-300; }
-
-    /* ---- Research-interest chips ---- */
-    .chip {
-      @apply rounded-full border border-lavender-200 bg-lavender-50 px-4 py-1.5 text-sm font-medium
-             text-lavender-700 dark:border-lavender-900/60 dark:bg-lavender-900/30 dark:text-lavender-200;
-    }
-
-    /* ---- Publication buttons ---- */
-    .pub-btn {
-      @apply inline-flex items-center gap-1.5 rounded-full border border-zinc-300 px-4 py-1.5 text-xs
-             font-semibold text-zinc-700 transition hover:border-lavender-400 hover:text-lavender-700
-             dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-lavender-500 dark:hover:text-lavender-300;
-    }
-    .pub-btn-primary { @apply border-transparent bg-lavender-500 text-white hover:bg-lavender-600 hover:text-white; }
-
-    /* ---- Social icon links ---- */
-    .social-link {
-      @apply grid h-10 w-10 place-items-center rounded-full border border-zinc-200 text-zinc-600
-             transition hover:-translate-y-0.5 hover:border-lavender-400 hover:bg-lavender-50 hover:text-lavender-700
-             dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-lavender-500 dark:hover:bg-zinc-800;
-    }
-    .social-link svg { @apply h-5 w-5; }
-    .social-link-sm { @apply h-9 w-9; }
-    .social-link-sm svg { @apply h-4 w-4; }
-
-    /* ---- Media links + YouTube cards ---- */
-    .media-link {
-      @apply inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-white px-5 py-2.5 text-sm
-             font-semibold text-zinc-700 transition hover:border-lavender-400 hover:text-lavender-700
-             dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-lavender-500;
-    }
-    .media-link-icon { @apply inline-grid h-5 w-5 place-items-center text-lavender-600 dark:text-lavender-300; }
-    .media-link-icon svg { @apply h-5 w-5; }
-
-    .yt-card {
-      @apply block rounded-2xl border border-zinc-200 bg-white p-3 shadow-sm transition
-             hover:-translate-y-1 hover:shadow-lg hover:shadow-lavender-500/10
-             dark:border-zinc-800 dark:bg-zinc-900;
-    }
-    .yt-thumb {
-      @apply relative grid aspect-video place-items-center overflow-hidden rounded-xl
-             bg-gradient-to-br from-lavender-300 to-lavender-100 bg-cover bg-center
-             dark:from-lavender-700 dark:to-lavender-900;
-    }
-    .yt-play { @apply grid h-14 w-14 place-items-center rounded-full bg-black/60 text-white transition; }
-    .yt-play::after {
-      content: ""; margin-left: 3px; border-style: solid;
-      border-width: 9px 0 9px 15px; border-color: transparent transparent transparent #fff;
-    }
-    .yt-card:hover .yt-play { @apply scale-110 bg-red-600; }
-
-    /* ---- Contact form ---- */
-    .form-label { @apply mb-1.5 block text-left text-sm font-medium text-zinc-700 dark:text-zinc-300; }
-    .form-input {
-      @apply w-full rounded-xl border border-zinc-300 bg-white px-4 py-2.5 text-sm text-ink
-             transition placeholder:text-zinc-400 focus:border-lavender-400 focus:ring-2 focus:ring-lavender-200
-             dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:focus:ring-lavender-900;
-    }
-
-    /* ---- Scroll-reveal animation (driven by IntersectionObserver in main.js) ---- */
-    .reveal {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease; will-change: opacity, transform;
-    }
-    .reveal.is-visible { opacity: 1; transform: none; }
-  </style>
-
-  <!-- Plain CSS that needs no Tailwind processing (typography, a11y focus rings). -->
-  <style>
-    h1, h2, h3 { text-wrap: balance; }
-    p { text-wrap: pretty; }
-    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-      outline: 2px solid var(--accent, #8B7BB8); outline-offset: 2px; border-radius: 6px;
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-    }
-  </style>
 </head>
 
 <body class="font-sans bg-white text-ink antialiased dark:bg-zinc-950 dark:text-zinc-100">
@@ -586,26 +445,58 @@
           <p class="section-eyebrow">Media</p>
           <h2 class="section-title">Content &amp; Creations</h2>
           <p class="mt-3 text-zinc-600 dark:text-zinc-300">
-            Latest from my YouTube channel and socials.
+            Beyond engineering, I create explainer videos on Bangladesh's governance,
+            constitution, and society. A few recent ones from my YouTube channel:
           </p>
         </div>
 
-        <!-- YouTube thumbnails -->
-        <!-- TODO: YouTube channel is JS-rendered and could not be scraped automatically.
-             Replace each VIDEO_ID below with a real 11-character YouTube video ID.
-             The thumbnail and link update automatically from the data-video-id attribute. -->
+        <!-- Featured YouTube videos (real thumbnails + links from the channel feed).
+             To swap a video, change the watch?v= ID, the /vi/<ID>/ in the <img>, and the title. -->
         <div class="reveal mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <a class="yt-card" data-video-id="VIDEO_ID_1" target="_blank" rel="noopener noreferrer">
-            <div class="yt-thumb"><span class="yt-play" aria-hidden="true"></span></div>
-            <h3 class="mt-3 font-medium leading-snug">&lt;Video title 1&gt;</h3> <!-- TODO: paste title -->
+
+          <a class="yt-card" href="https://www.youtube.com/watch?v=xGaSgdRTXXw" target="_blank" rel="noopener noreferrer">
+            <div class="yt-thumb">
+              <img src="https://i.ytimg.com/vi/xGaSgdRTXXw/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async"
+                   alt="YouTube thumbnail — Design of the State: Constitution of Bangladesh" />
+              <span class="yt-badge" aria-hidden="true"></span>
+            </div>
+            <div class="p-4">
+              <h3 class="line-clamp-2 font-semibold leading-snug">Design of the State: Constitution of Bangladesh</h3>
+              <p class="mt-1.5 flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400">
+                <svg class="h-3.5 w-3.5 text-red-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14C4.5 20.45 12 20.45 12 20.45s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
+                YouTube · 2026
+              </p>
+            </div>
           </a>
-          <a class="yt-card" data-video-id="VIDEO_ID_2" target="_blank" rel="noopener noreferrer">
-            <div class="yt-thumb"><span class="yt-play" aria-hidden="true"></span></div>
-            <h3 class="mt-3 font-medium leading-snug">&lt;Video title 2&gt;</h3> <!-- TODO: paste title -->
+
+          <a class="yt-card" href="https://www.youtube.com/watch?v=WTVPJQMSn7c" target="_blank" rel="noopener noreferrer">
+            <div class="yt-thumb">
+              <img src="https://i.ytimg.com/vi/WTVPJQMSn7c/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async"
+                   alt="YouTube thumbnail — The Bangladesh Constitution: Summary in English" />
+              <span class="yt-badge" aria-hidden="true"></span>
+            </div>
+            <div class="p-4">
+              <h3 class="line-clamp-2 font-semibold leading-snug">The Bangladesh Constitution — Summary in English</h3>
+              <p class="mt-1.5 flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400">
+                <svg class="h-3.5 w-3.5 text-red-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14C4.5 20.45 12 20.45 12 20.45s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
+                YouTube · 2026
+              </p>
+            </div>
           </a>
-          <a class="yt-card" data-video-id="VIDEO_ID_3" target="_blank" rel="noopener noreferrer">
-            <div class="yt-thumb"><span class="yt-play" aria-hidden="true"></span></div>
-            <h3 class="mt-3 font-medium leading-snug">&lt;Video title 3&gt;</h3> <!-- TODO: paste title -->
+
+          <a class="yt-card" href="https://www.youtube.com/watch?v=gFeBrZykvY8" target="_blank" rel="noopener noreferrer">
+            <div class="yt-thumb">
+              <img src="https://i.ytimg.com/vi/gFeBrZykvY8/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async"
+                   alt="YouTube thumbnail — Statecraft &amp; Architecture of Bangladesh" />
+              <span class="yt-badge" aria-hidden="true"></span>
+            </div>
+            <div class="p-4">
+              <h3 class="line-clamp-2 font-semibold leading-snug">Statecraft &amp; Architecture of Bangladesh</h3>
+              <p class="mt-1.5 flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400">
+                <svg class="h-3.5 w-3.5 text-red-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14C4.5 20.45 12 20.45 12 20.45s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
+                YouTube · 2026
+              </p>
+            </div>
           </a>
         </div>
 

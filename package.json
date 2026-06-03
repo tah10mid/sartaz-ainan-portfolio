@@ -1,0 +1,13 @@
+{
+  "name": "sartaz-ainan-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio for Sartaz Ainan — compiled Tailwind CSS, no runtime CDN.",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i src/input.css -o css/app.css --minify",
+    "watch": "tailwindcss -i src/input.css -o css/app.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

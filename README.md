@@ -129,10 +129,14 @@ blocked, so a few fields remain `TODO`:
 | About bio                    | ✅ Filled from Scholar facts — **expand** with a personal bio from LinkedIn |
 | Research Interests chips     | ✅ Filled from Scholar (Metallurgy, Semiconductors, Ceramics, Dielectric Materials, Steel Making) |
 | Featured SSRN card           | ✅ Filled — real title, authors, year                       |
-| "What I do" cards            | Tailor the 3 descriptions (optional)                        |
+| Experience / Skills / Leadership | ✅ Filled from your CV (Anwar Ispat, internships, labs, BUET Career Club, etc.) |
+| Research & Projects          | ✅ Filled — thesis (SSRN/ICME) + 4 projects                  |
+| Contact emails / phone / location | ✅ Filled — emails, +880 1553-064653, Dhaka, Bangladesh |
 | Media → YouTube cards        | **TODO** — real `data-video-id` (11-char IDs) + video titles |
-| Contact `mailto:`            | **TODO** — your real email address                          |
 | Contact form `action`        | **TODO** — your Formspree endpoint (`YOUR_FORM_ID`)         |
+
+> **Privacy:** full street/permanent home addresses and your referees' phone numbers were
+> intentionally left off this public site. Add them only if you really want them public.
 
 All **social/profile links are wired** (LinkedIn, Google Scholar, ResearchGate, YouTube,
 Instagram, Facebook), the **SSRN paper link** points to `abstract_id=6215898`, and

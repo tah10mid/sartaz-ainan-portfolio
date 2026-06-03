@@ -14,9 +14,9 @@ researcher and content creator. Built with semantic **HTML5**, **Tailwind CSS**,
 
 ```
 sartaz-ainan-portfolio/
-├── index.html              # the whole page (all sections)
-├── css/
-│   └── styles.css          # component classes (@apply), scroll-reveal, focus styles
+├── index.html              # the whole page (all sections) + inline <style> blocks
+│                           #   (custom component classes live in a
+│                           #    <style type="text/tailwindcss"> block — see note below)
 ├── js/
 │   ├── icons.js            # inline SVG social/brand icons (no icon CDN)
 │   └── main.js             # dark mode, mobile menu, scroll-spy, reveal, form, YouTube
@@ -60,6 +60,9 @@ npx serve .
   This is ideal for a small personal site. The trade-off is a small runtime cost and a
   console note that the CDN isn't for production. If you'd rather ship compiled CSS, see
   the next section.
+- **Custom component classes** (`.card`, `.chip`, `.yt-thumb`, …) use Tailwind's `@apply`.
+  The Play CDN only processes `@apply` inside an inline `<style type="text/tailwindcss">`
+  block — **not** in an externally-linked `.css` file — so those rules live in `index.html`.
 - Hosts for free with zero configuration on **Netlify**, **GitHub Pages**, or **Vercel**.
 
 ### Optional: compile Tailwind with the CLI (removes the CDN)
@@ -72,7 +75,7 @@ npx tailwindcss init
 # Point `content` at ["./index.html", "./js/**/*.js"] and move the
 # tailwind.config theme block from index.html into tailwind.config.js.
 # Create src/input.css with: @tailwind base; @tailwind components; @tailwind utilities;
-# plus the @apply rules currently in css/styles.css.
+# plus the @apply rules currently in the <style type="text/tailwindcss"> block in index.html.
 npx tailwindcss -i ./src/input.css -o ./css/tailwind.css --minify
 ```
 

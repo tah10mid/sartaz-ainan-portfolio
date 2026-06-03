@@ -1,13 +1,14 @@
 /* =========================================================================
    Tailwind source — compiled to ../css/app.css via the Tailwind CLI.
    Build:  npm run build   (or: npx tailwindcss -i src/input.css -o css/app.css --minify)
+   Theme:  Industrial / Engineering — steel-blue + amber, sharp corners, mono labels.
    ========================================================================= */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ---- Base typography / a11y (plain CSS) ------------------------------- */
-:root { --accent: #8B7BB8; }
+:root { --accent: #3e6e9c; }
 h1, h2, h3 { text-wrap: balance; }
 p { text-wrap: pretty; }
 
@@ -17,7 +18,6 @@ input:focus-visible,
 textarea:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
-  border-radius: 6px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -25,110 +25,144 @@ textarea:focus-visible {
   .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
 
+/* Blueprint grid backdrop (used on the hero) */
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(62,110,156,0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(62,110,156,0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.dark .grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(127,163,196,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(127,163,196,0.06) 1px, transparent 1px);
+}
+
 /* =========================================================================
-   Reusable component classes
+   Component classes
    ========================================================================= */
 @layer components {
-  /* ---- Navbar links + scroll-spy active state ---- */
+
+  /* ---- Navbar ---- */
   .nav-link {
-    @apply rounded-full px-3.5 py-2 text-sm font-medium text-zinc-600 transition
-           hover:bg-lavender-100 hover:text-lavender-700
-           dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-lavender-200;
+    @apply px-3 py-2 font-mono text-xs uppercase tracking-wider text-zinc-500 transition
+           hover:text-steel-600 dark:text-zinc-400 dark:hover:text-steel-300;
   }
-  .nav-link.is-active { @apply bg-lavender-100 text-lavender-700 dark:bg-zinc-800 dark:text-lavender-200; }
+  .nav-link.is-active { @apply text-steel-700 dark:text-steel-300; }
+  .nav-link.is-active::before { content: "// "; @apply text-hazard-500; }
   .mobile-link {
-    @apply rounded-lg px-3 py-3 text-base font-medium text-zinc-700 transition
-           hover:bg-lavender-100 hover:text-lavender-700 dark:text-zinc-200 dark:hover:bg-zinc-800;
+    @apply border-l-2 border-transparent px-3 py-3 font-mono text-sm uppercase tracking-wider
+           text-zinc-600 transition hover:border-steel-500 hover:bg-zinc-50 hover:text-steel-700
+           dark:text-zinc-300 dark:hover:bg-zinc-900 dark:hover:text-steel-300;
   }
   #navbar.scrolled {
-    @apply border-zinc-200/80 bg-white/80 shadow-sm backdrop-blur-md
-           dark:border-zinc-800/80 dark:bg-zinc-950/80;
+    @apply border-b border-zinc-200 bg-white/85 backdrop-blur
+           dark:border-zinc-800 dark:bg-zinc-950/85;
   }
 
-  /* ---- Section headings ---- */
-  .section-eyebrow { @apply mb-2 text-sm font-semibold uppercase tracking-widest text-lavender-600 dark:text-lavender-400; }
-  .section-title   { @apply font-serif text-3xl font-semibold tracking-tight sm:text-4xl; }
+  /* ---- Section kicker: "01 — ABOUT" ---- */
+  .kicker {
+    @apply mb-3 inline-flex items-center gap-2 font-mono text-xs font-medium uppercase tracking-[0.2em]
+           text-steel-600 dark:text-steel-300;
+  }
+  .kicker-num { @apply text-hazard-500; }
+  .section-title { @apply font-display text-3xl font-bold tracking-tight text-ink dark:text-white sm:text-4xl; }
 
-  /* ---- Cards ---- */
+  /* ---- Buttons ---- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-none px-6 py-3 font-mono text-xs
+           font-semibold uppercase tracking-wider transition;
+  }
+  .btn-primary { @apply bg-steel-600 text-white hover:bg-steel-700; }
+  .btn-outline {
+    @apply border border-zinc-300 text-ink hover:border-steel-500 hover:text-steel-700
+           dark:border-zinc-700 dark:text-zinc-100 dark:hover:border-steel-400 dark:hover:text-steel-300;
+  }
+  .btn-wa { @apply bg-[#25D366] text-zinc-950 hover:bg-[#1fae54] hover:text-white; }
+
+  /* ---- Cards (flat, bordered, sharp) ---- */
   .card {
-    @apply rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition
-           hover:-translate-y-1 hover:shadow-lg hover:shadow-lavender-500/10
-           dark:border-zinc-800 dark:bg-zinc-900;
+    @apply relative rounded-none border border-zinc-200 bg-white p-6 transition
+           hover:-translate-y-1 hover:border-steel-400
+           dark:border-zinc-800 dark:bg-zinc-900/60 dark:hover:border-steel-500;
   }
-  .card-icon { @apply grid h-12 w-12 place-items-center rounded-xl bg-lavender-100 text-lavender-600 dark:bg-lavender-900/40 dark:text-lavender-300; }
+  /* accent tick in the top-left corner */
+  .card::before {
+    content: ""; @apply absolute left-0 top-0 h-6 w-[2px] bg-steel-500 opacity-0 transition;
+  }
+  .card:hover::before { @apply opacity-100; }
+  .card-icon { @apply grid h-11 w-11 place-items-center rounded-none border border-steel-200 bg-steel-50 text-steel-600
+                      dark:border-steel-800 dark:bg-steel-950 dark:text-steel-300; }
 
-  /* ---- Research-interest chips ---- */
+  /* sub-label inside cards (mono) */
+  .meta-mono { @apply font-mono text-[11px] uppercase tracking-wider text-zinc-400 dark:text-zinc-500; }
+
+  /* ---- Spec chips (interests / skills) ---- */
   .chip {
-    @apply rounded-full border border-lavender-200 bg-lavender-50 px-4 py-1.5 text-sm font-medium
-           text-lavender-700 dark:border-lavender-900/60 dark:bg-lavender-900/30 dark:text-lavender-200;
+    @apply rounded-none border border-zinc-300 bg-transparent px-3 py-1.5 font-mono text-xs
+           tracking-wide text-zinc-700 transition hover:border-steel-400 hover:text-steel-700
+           dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-steel-500 dark:hover:text-steel-300;
   }
 
-  /* ---- Publication buttons ---- */
+  /* ---- Publication / link buttons ---- */
   .pub-btn {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-zinc-300 px-4 py-1.5 text-xs
-           font-semibold text-zinc-700 transition hover:border-lavender-400 hover:text-lavender-700
-           dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-lavender-500 dark:hover:text-lavender-300;
+    @apply inline-flex items-center gap-1.5 rounded-none border border-zinc-300 px-3 py-1.5 font-mono
+           text-[11px] font-semibold uppercase tracking-wider text-zinc-700 transition
+           hover:border-steel-400 hover:text-steel-700
+           dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-steel-500 dark:hover:text-steel-300;
   }
-  .pub-btn-primary { @apply border-transparent bg-lavender-500 text-white hover:bg-lavender-600 hover:text-white; }
+  .pub-btn-primary { @apply border-steel-600 bg-steel-600 text-white hover:bg-steel-700 hover:text-white; }
 
-  /* ---- Social icon links ---- */
+  /* ---- Social icon links (sharp squares) ---- */
   .social-link {
-    @apply grid h-10 w-10 place-items-center rounded-full border border-zinc-200 text-zinc-600
-           transition hover:-translate-y-0.5 hover:border-lavender-400 hover:bg-lavender-50 hover:text-lavender-700
-           dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-lavender-500 dark:hover:bg-zinc-800;
+    @apply grid h-10 w-10 place-items-center rounded-none border border-zinc-300 text-zinc-600 transition
+           hover:-translate-y-0.5 hover:border-steel-400 hover:bg-steel-50 hover:text-steel-700
+           dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-steel-500 dark:hover:bg-zinc-800;
   }
-  .social-link svg { @apply h-5 w-5; }
+  .social-link svg { @apply h-[18px] w-[18px]; }
   .social-link-sm { @apply h-9 w-9; }
   .social-link-sm svg { @apply h-4 w-4; }
 
   /* ---- Media links ---- */
   .media-link {
-    @apply inline-flex items-center gap-2 rounded-full border border-zinc-300 bg-white px-5 py-2.5 text-sm
-           font-semibold text-zinc-700 transition hover:border-lavender-400 hover:text-lavender-700
-           dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-lavender-500;
+    @apply inline-flex items-center gap-2 rounded-none border border-zinc-300 bg-white px-5 py-2.5
+           font-mono text-xs font-semibold uppercase tracking-wider text-zinc-700 transition
+           hover:border-steel-400 hover:text-steel-700
+           dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-steel-500;
   }
-  .media-link-icon { @apply inline-grid h-5 w-5 place-items-center text-lavender-600 dark:text-lavender-300; }
-  .media-link-icon svg { @apply h-5 w-5; }
+  .media-link-icon { @apply inline-grid h-4 w-4 place-items-center text-steel-600 dark:text-steel-300; }
+  .media-link-icon svg { @apply h-4 w-4; }
 
   /* ---- YouTube video cards (real thumbnails) ---- */
   .yt-card {
-    @apply block overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition
-           hover:-translate-y-1 hover:shadow-xl hover:shadow-lavender-500/10
-           dark:border-zinc-800 dark:bg-zinc-900;
+    @apply block overflow-hidden rounded-none border border-zinc-200 bg-white transition
+           hover:-translate-y-1 hover:border-steel-400
+           dark:border-zinc-800 dark:bg-zinc-900/60 dark:hover:border-steel-500;
   }
   .yt-thumb { @apply relative aspect-video overflow-hidden bg-zinc-100 dark:bg-zinc-800; }
   .yt-thumb img { @apply absolute inset-0 h-full w-full object-cover transition duration-500; }
   .yt-card:hover .yt-thumb img { @apply scale-105; }
   .yt-badge {
-    @apply absolute left-1/2 top-1/2 z-10 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2
-           place-items-center rounded-full bg-red-600 text-white shadow-lg transition;
+    @apply absolute left-1/2 top-1/2 z-10 grid -translate-x-1/2 -translate-y-1/2
+           place-items-center rounded-none bg-red-600 text-white shadow-lg transition;
+    height: 3.25rem; width: 3.25rem;
   }
   .yt-card:hover .yt-badge { @apply scale-110 bg-red-700; }
 
-  /* ---- Contact form ---- */
-  .form-label { @apply mb-1.5 block text-left text-sm font-medium text-zinc-700 dark:text-zinc-300; }
-  .form-input {
-    @apply w-full rounded-xl border border-zinc-300 bg-white px-4 py-2.5 text-sm text-ink
-           transition placeholder:text-zinc-400 focus:border-lavender-400 focus:ring-2 focus:ring-lavender-200
-           dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:focus:ring-lavender-900;
-  }
-
-  /* ---- Scroll-reveal animation (driven by IntersectionObserver in main.js) ---- */
+  /* ---- Scroll-reveal ---- */
   .reveal {
-    opacity: 0; transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease; will-change: opacity, transform;
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease; will-change: opacity, transform;
   }
   .reveal.is-visible { opacity: 1; transform: none; }
 }
 
 /* ---- Pseudo-element decorations (plain CSS, outside @layer) ----------- */
-/* YouTube play-badge triangle */
 .yt-badge::after {
   content: ""; margin-left: 3px; border-style: solid;
   border-width: 8px 0 8px 14px; border-color: transparent transparent transparent #fff;
 }
-/* Subtle gradient over thumbnails so the badge always reads */
 .yt-thumb::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(to top, rgba(0,0,0,0.22), transparent 55%);
+  background: linear-gradient(to top, rgba(0,0,0,0.28), transparent 55%);
 }

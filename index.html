@@ -7,15 +7,15 @@
   <!-- ============================ SEO / META ============================ -->
   <title>Sartaz Ainan — Materials &amp; Metallurgical Engineer</title>
   <meta name="description"
-        content="Sartaz Ainan — Materials &amp; Metallurgical Engineering graduate from BUET, working at Anwar Ispat Ltd. Specializing in steel processing, failure analysis, and material characterization." />
+        content="Sartaz Ainan — Materials &amp; Metallurgical Engineering graduate from BUET, Assistant Engineer (Quality) at Anwar Ispat Ltd. Steel processing, failure analysis, and material characterization." />
   <meta name="author" content="Sartaz Ainan" />
-  <meta name="theme-color" content="#8B7BB8" />
+  <meta name="theme-color" content="#3e6e9c" />
 
-  <!-- Open Graph (social share) -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Sartaz Ainan — Materials &amp; Metallurgical Engineer" />
   <meta property="og:description"
-        content="Personal portfolio of Sartaz Ainan — academic researcher and content creator. Explore research, publications, and media." />
+        content="Assistant Engineer (Quality) at Anwar Ispat Ltd. Steel processing, failure analysis, and material characterization." />
   <meta property="og:url" content="https://sartaz-ainan-portfolio.vercel.app/" />
   <meta property="og:image" content="images/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
@@ -25,55 +25,48 @@
   <!-- Twitter card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Sartaz Ainan — Materials &amp; Metallurgical Engineer" />
-  <meta name="twitter:description"
-        content="Personal portfolio of Sartaz Ainan — academic researcher and content creator." />
+  <meta name="twitter:description" content="Assistant Engineer (Quality) at Anwar Ispat Ltd. — steel, failure analysis, materials." />
   <meta name="twitter:image" content="images/og-image.jpg" />
 
-  <!-- Favicons (SA monogram) -->
+  <!-- Favicons -->
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
 
-  <!-- ============================ FONTS ============================ -->
+  <!-- Fonts: Space Grotesk (display) · Inter (body) · JetBrains Mono (labels) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet" />
 
-  <!-- ============================ TAILWIND (compiled — no runtime CDN) ============================ -->
-  <!-- Styles are precompiled to css/app.css via the Tailwind CLI: `npm run build`.
-       Palette, fonts and component classes live in tailwind.config.js + src/input.css. -->
+  <!-- Compiled Tailwind (no runtime CDN) -->
   <link rel="stylesheet" href="css/app.css" />
   <script>
-    // Respect saved theme BEFORE paint to avoid a flash of the wrong theme.
+    // Auto theme: follow the device unless the visitor has chosen one (set BEFORE paint).
     if (localStorage.theme === 'dark' ||
         (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
   </script>
-
 </head>
 
-<body class="font-sans bg-white text-ink antialiased dark:bg-zinc-950 dark:text-zinc-100">
+<body class="font-sans bg-white text-ink antialiased dark:bg-zinc-950 dark:text-zinc-100 selection:bg-steel-500 selection:text-white">
 
-  <!-- Skip link for keyboard / screen-reader users -->
+  <!-- Skip link -->
   <a href="#main"
      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100]
-            focus:rounded-lg focus:bg-lavender-600 focus:px-4 focus:py-2 focus:text-white">
+            focus:bg-steel-600 focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:uppercase focus:text-white">
     Skip to content
   </a>
 
   <!-- ================================================================== -->
   <!-- NAVBAR                                                             -->
   <!-- ================================================================== -->
-  <header id="navbar"
-          class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300">
-    <nav class="mx-auto flex max-w-content items-center justify-between px-5 py-4 lg:px-8"
-         aria-label="Primary">
-      <!-- Brand -->
-      <a href="#hero" class="flex items-center gap-2 font-serif text-lg font-semibold tracking-tight">
-        <span class="grid h-8 w-8 place-items-center rounded-lg bg-lavender-500 text-sm font-bold text-white">SA</span>
-        Sartaz Ainan
+  <header id="navbar" class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300">
+    <nav class="mx-auto flex max-w-content items-center justify-between px-5 py-4 lg:px-8" aria-label="Primary">
+      <a href="#hero" class="flex items-center gap-2.5">
+        <span class="grid h-8 w-8 place-items-center bg-steel-600 font-display text-sm font-bold text-white">SA</span>
+        <span class="font-display text-base font-bold tracking-tight">Sartaz Ainan</span>
       </a>
 
       <!-- Desktop links -->
@@ -82,22 +75,15 @@
         <a href="#research" class="nav-link" data-nav="research">Research</a>
         <a href="#media"    class="nav-link" data-nav="media">Media</a>
         <a href="#contact"  class="nav-link" data-nav="contact">Contact</a>
-
-        <!-- Dark-mode toggle -->
         <button id="theme-toggle" type="button"
-                class="ml-2 grid h-9 w-9 place-items-center rounded-full text-zinc-600 transition
-                       hover:bg-lavender-100 hover:text-lavender-700
-                       dark:text-zinc-300 dark:hover:bg-zinc-800"
+                class="ml-2 grid h-9 w-9 place-items-center border border-zinc-300 text-zinc-600 transition
+                       hover:border-steel-400 hover:text-steel-700 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-steel-500"
                 aria-label="Toggle dark mode">
-          <svg class="icon-sun h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
-               viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="4" /><path stroke-linecap="round"
-              d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41" />
+          <svg class="icon-sun h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" /><path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41" />
           </svg>
-          <svg class="icon-moon hidden h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
-               viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+          <svg class="icon-moon hidden h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
           </svg>
         </button>
       </div>
@@ -105,36 +91,25 @@
       <!-- Mobile controls -->
       <div class="flex items-center gap-1 md:hidden">
         <button id="theme-toggle-mobile" type="button"
-                class="grid h-9 w-9 place-items-center rounded-full text-zinc-600
-                       hover:bg-lavender-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                class="grid h-9 w-9 place-items-center border border-zinc-300 text-zinc-600 dark:border-zinc-700 dark:text-zinc-300"
                 aria-label="Toggle dark mode">
-          <svg class="icon-sun h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
-               viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="4" /><path stroke-linecap="round"
-              d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41" />
+          <svg class="icon-sun h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" /><path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41" />
           </svg>
-          <svg class="icon-moon hidden h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"
-               viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+          <svg class="icon-moon hidden h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
           </svg>
         </button>
         <button id="menu-btn" type="button"
-                class="grid h-9 w-9 place-items-center rounded-lg text-zinc-700 hover:bg-lavender-100
-                       dark:text-zinc-200 dark:hover:bg-zinc-800"
+                class="grid h-9 w-9 place-items-center border border-zinc-300 text-zinc-700 dark:border-zinc-700 dark:text-zinc-200"
                 aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"
-               viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
-          </svg>
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" /></svg>
         </button>
       </div>
     </nav>
 
     <!-- Mobile dropdown -->
-    <div id="mobile-menu"
-         class="hidden border-t border-zinc-200 bg-white/95 backdrop-blur md:hidden
-                dark:border-zinc-800 dark:bg-zinc-950/95">
+    <div id="mobile-menu" class="hidden border-t border-zinc-200 bg-white md:hidden dark:border-zinc-800 dark:bg-zinc-950">
       <div class="flex flex-col px-5 py-3">
         <a href="#about"    class="mobile-link">About</a>
         <a href="#research" class="mobile-link">Research</a>
@@ -149,70 +124,61 @@
     <!-- ================================================================ -->
     <!-- HERO                                                             -->
     <!-- ================================================================ -->
-    <section id="hero" class="relative overflow-hidden scroll-mt-20 pt-28 pb-16 md:pt-36 md:pb-24">
-      <!-- soft decorative blobs -->
-      <div aria-hidden="true"
-           class="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-lavender-200/50 blur-3xl dark:bg-lavender-900/30"></div>
-      <div aria-hidden="true"
-           class="pointer-events-none absolute top-40 -left-24 h-64 w-64 rounded-full bg-lavender-100/60 blur-3xl dark:bg-lavender-800/20"></div>
-
-      <div class="mx-auto grid max-w-content items-center gap-10 px-5 lg:px-8 md:grid-cols-2">
+    <section id="hero" class="grid-bg relative scroll-mt-20 border-b border-zinc-200 pt-28 pb-16 dark:border-zinc-800 md:pt-36 md:pb-24">
+      <div class="mx-auto grid max-w-content items-center gap-12 px-5 lg:px-8 md:grid-cols-[1.1fr_0.9fr]">
         <!-- Copy -->
-        <div class="reveal order-2 md:order-1">
-          <p class="mb-3 inline-flex items-center gap-2 rounded-full bg-lavender-100 px-3 py-1 text-sm font-medium text-lavender-700 dark:bg-lavender-900/40 dark:text-lavender-200">
-            <span class="h-2 w-2 rounded-full bg-lavender-500"></span>
-            Materials &amp; Metallurgical Engineer
+        <div class="reveal">
+          <p class="kicker">
+            <span class="kicker-num">▹</span> Materials &amp; Metallurgical Engineer
           </p>
-          <h1 class="font-serif text-4xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-            Sartaz Ainan
+          <h1 class="font-display text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+            SARTAZ<br />AINAN<span class="text-hazard-500">.</span>
           </h1>
-          <p class="mt-4 text-lg font-medium text-lavender-700 dark:text-lavender-300">
-            Assistant Engineer, Quality · Anwar Ispat Ltd.
+          <p class="mt-5 font-mono text-sm uppercase tracking-wider text-steel-600 dark:text-steel-300">
+            Assistant Engineer, Quality &nbsp;/&nbsp; Anwar Ispat Ltd.
           </p>
-          <p class="mt-4 max-w-xl text-base leading-relaxed text-zinc-600 dark:text-zinc-300">
-            Building a strong technical foundation in steel processing, failure analysis,
-            and material characterization — with a growing focus on production operations,
-            quality control, and raw-material sourcing across the steel and energy sectors.
+          <p class="mt-5 max-w-xl text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+            BUET graduate building a strong technical foundation in steel processing, failure
+            analysis, and material characterization — focused on quality control, production
+            operations, and raw-material sourcing across the steel and energy sectors.
           </p>
 
-          <!-- CTAs -->
           <div class="mt-8 flex flex-wrap gap-3">
-            <a href="#research"
-               class="inline-flex items-center gap-2 rounded-full bg-lavender-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-lavender-500/25 transition hover:bg-lavender-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lavender-500">
-              View Research
+            <a href="#research" class="btn btn-primary">
+              View Work
               <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5-5 5M6 12h12"/></svg>
             </a>
-            <a href="#contact"
-               class="inline-flex items-center gap-2 rounded-full border border-zinc-300 px-6 py-3 text-sm font-semibold text-ink transition hover:border-lavender-400 hover:text-lavender-700 dark:border-zinc-700 dark:text-zinc-100 dark:hover:border-lavender-500 dark:hover:text-lavender-300">
-              Get in Touch
-            </a>
+            <a href="#contact" class="btn btn-outline">Get in Touch</a>
           </div>
 
           <!-- Social row -->
           <ul class="mt-8 flex flex-wrap items-center gap-2" aria-label="Social profiles">
-            <!-- Icons injected by js/social.js to keep markup DRY -->
-            <li><a class="social-link" data-social="linkedin"    href="https://www.linkedin.com/in/sartaz-ainan-7b9882192" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a></li>
-            <li><a class="social-link" data-social="scholar"     href="https://share.google/XKenUMCxASmgEXVwu" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"></a></li>
+            <li><a class="social-link" data-social="linkedin"     href="https://www.linkedin.com/in/sartaz-ainan-7b9882192" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a></li>
+            <li><a class="social-link" data-social="scholar"      href="https://share.google/XKenUMCxASmgEXVwu" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"></a></li>
             <li><a class="social-link" data-social="researchgate" href="https://share.google/0mQhjcECUKkf9KYYe" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate"></a></li>
-            <li><a class="social-link" data-social="youtube"     href="https://youtube.com/@sartazainan1783" target="_blank" rel="noopener noreferrer" aria-label="YouTube"></a></li>
-            <li><a class="social-link" data-social="instagram"   href="https://instagram.com/sartaz.ainan" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a></li>
-            <li><a class="social-link" data-social="facebook"    href="https://share.google/tVUie7xv2gN7bTM7R" target="_blank" rel="noopener noreferrer" aria-label="Facebook"></a></li>
+            <li><a class="social-link" data-social="youtube"      href="https://youtube.com/@sartazainan1783" target="_blank" rel="noopener noreferrer" aria-label="YouTube"></a></li>
+            <li><a class="social-link" data-social="instagram"    href="https://instagram.com/sartaz.ainan" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a></li>
+            <li><a class="social-link" data-social="facebook"     href="https://share.google/tVUie7xv2gN7bTM7R" target="_blank" rel="noopener noreferrer" aria-label="Facebook"></a></li>
           </ul>
         </div>
 
-        <!-- Photo -->
-        <div class="reveal order-1 flex justify-center md:order-2 md:justify-end">
-          <div class="relative">
-            <!-- soft circular backdrop so the white-bg headshot reads on any section -->
-            <div aria-hidden="true"
-                 class="absolute inset-0 -z-10 scale-110 rounded-full bg-gradient-to-br from-lavender-200 to-lavender-100 blur-2xl dark:from-lavender-800/40 dark:to-lavender-900/20"></div>
-            <img src="images/professional-photo.jpg"
-                 srcset="images/professional-photo-480.jpg 480w, images/professional-photo.jpg 900w"
-                 sizes="(max-width: 768px) 280px, 360px"
-                 width="598" height="900" loading="eager" decoding="async"
-                 alt="Sartaz Ainan — a man in a black blazer and lavender shirt with glasses, arms crossed, smiling"
-                 class="relative w-64 rounded-[2rem] border-4 border-white object-cover shadow-2xl shadow-lavender-500/20 sm:w-72 dark:border-zinc-800" />
-          </div>
+        <!-- Photo: technical framed portrait -->
+        <div class="reveal flex justify-center md:justify-end">
+          <figure class="relative">
+            <!-- offset steel accent block behind -->
+            <div aria-hidden="true" class="absolute -bottom-3 -right-3 -z-10 h-full w-full border border-steel-400/60 dark:border-steel-500/40"></div>
+            <div class="border border-zinc-300 bg-zinc-100 p-2 dark:border-zinc-700">
+              <img src="images/professional-photo.jpg"
+                   srcset="images/professional-photo-480.jpg 480w, images/professional-photo.jpg 900w"
+                   sizes="(max-width: 768px) 240px, 320px"
+                   width="598" height="900" loading="eager" decoding="async"
+                   alt="Sartaz Ainan — a man in a black blazer and lavender shirt with glasses, arms crossed, smiling"
+                   class="block w-60 object-cover sm:w-72" />
+            </div>
+            <figcaption class="mt-2 flex items-center justify-between border border-zinc-300 bg-white px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-zinc-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400">
+              <span>FIG.01 — S. AINAN</span><span class="text-hazard-500">● BUET / MME</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -220,30 +186,24 @@
     <!-- ================================================================ -->
     <!-- ABOUT                                                            -->
     <!-- ================================================================ -->
-    <section id="about" class="scroll-mt-20 bg-lavender-50/60 py-20 dark:bg-zinc-900/40">
+    <section id="about" class="scroll-mt-20 border-b border-zinc-200 py-20 dark:border-zinc-800">
       <div class="mx-auto max-w-content px-5 lg:px-8">
-        <div class="reveal mx-auto max-w-3xl text-center">
-          <p class="section-eyebrow">About</p>
-          <h2 class="section-title">A little about me</h2>
-        </div>
-
-        <div class="reveal mx-auto mt-8 max-w-3xl text-center text-lg leading-relaxed text-zinc-600 dark:text-zinc-300">
-          <p>
+        <div class="reveal max-w-3xl">
+          <p class="kicker"><span class="kicker-num">01</span> / About</p>
+          <h2 class="section-title">Engineer, researcher &amp; communicator</h2>
+          <p class="mt-5 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
             I'm a Materials &amp; Metallurgical Engineering graduate from BUET, currently an
-            Assistant Engineer in the Quality department at Anwar Ispat Ltd., with a strong technical
-            foundation in steel processing, failure analysis, and material characterization. Industry
-            internships and academic research have shaped my interest in production operations,
-            quality control, and raw-material sourcing across the steel and energy sectors. Alongside
-            the technical work, leadership roles have sharpened my organizational, communication, and
-            teamwork abilities — and I'm committed to continuous learning where materials science,
-            engineering judgment, and process optimization converge.
+            Assistant Engineer in the Quality department at Anwar Ispat Ltd. My foundation spans
+            steel processing, failure analysis, and material characterization — and I'm committed
+            to continuous learning where materials science, engineering judgment, and process
+            optimization converge.
           </p>
         </div>
 
-        <!-- Research interests as chips -->
-        <div class="reveal mx-auto mt-10 max-w-3xl text-center">
-          <h3 class="mb-4 font-serif text-xl font-semibold">Research Interests</h3>
-          <ul class="flex flex-wrap justify-center gap-2">
+        <!-- Interests -->
+        <div class="reveal mt-10">
+          <p class="meta-mono mb-3">// Areas of focus</p>
+          <ul class="flex flex-wrap gap-2">
             <li class="chip">Quality Control</li>
             <li class="chip">Steel Processing</li>
             <li class="chip">Failure Analysis</li>
@@ -256,80 +216,73 @@
           </ul>
         </div>
 
-        <!-- Background: Experience · Skills &amp; Tools · Leadership &amp; Volunteering
-             TODO (optional): add dates/years to each item if you'd like them shown. -->
-        <div class="reveal mt-14 grid gap-6 sm:grid-cols-3">
-
+        <!-- Background cards (hairline grid) -->
+        <div class="reveal mt-12 grid gap-px border border-zinc-200 bg-zinc-200 dark:border-zinc-800 dark:bg-zinc-800 sm:grid-cols-3">
           <!-- Experience -->
-          <article class="card">
+          <article class="bg-white p-6 dark:bg-zinc-950">
             <div class="card-icon">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1m-9 0h14a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"/></svg>
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1m-9 0h14a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"/></svg>
             </div>
-            <h3 class="mt-4 font-serif text-lg font-semibold">Experience</h3>
-            <ul class="mt-3 space-y-3 text-left">
+            <h3 class="mt-4 font-display text-lg font-bold">Experience</h3>
+            <ul class="mt-3 space-y-3">
               <li>
-                <p class="text-sm font-semibold">Assistant Engineer, Quality <span class="font-normal text-lavender-600 dark:text-lavender-300">· Present</span></p>
-                <p class="text-xs text-zinc-500 dark:text-zinc-400">Anwar Ispat Ltd. — QC of billet &amp; rebar, leading the physical &amp; chemical labs (tensile, bend, QES, chemical composition tests)</p>
+                <p class="text-sm font-semibold">Assistant Engineer, Quality <span class="text-hazard-500">/ Present</span></p>
+                <p class="meta-mono mt-0.5">Anwar Ispat Ltd.</p>
+                <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-400">QC of billet &amp; rebar; leading the physical &amp; chemical labs (tensile, bend, QES, composition tests).</p>
               </li>
               <li>
-                <p class="text-sm font-semibold">Intern · Abul Khair Steel Ltd. <span class="font-normal text-zinc-400">· 2023</span></p>
-                <p class="text-xs text-zinc-500 dark:text-zinc-400">TMT bar manufacturing — quality control &amp; production monitoring</p>
-              </li>
-              <li>
-                <p class="text-sm font-semibold">Intern · Bangladesh Gas Field Co. Ltd. <span class="font-normal text-zinc-400">· 2023</span></p>
-                <p class="text-xs text-zinc-500 dark:text-zinc-400">Gas supply mechanism — pipeline corrosion &amp; prevention</p>
+                <p class="text-sm font-semibold">Intern <span class="text-zinc-400">/ 2023</span></p>
+                <p class="meta-mono mt-0.5">Abul Khair Steel · BGFCL</p>
+                <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-400">TMT bar manufacturing &amp; QC; gas-pipeline corrosion &amp; prevention.</p>
               </li>
               <li>
                 <p class="text-sm font-semibold">Teaching &amp; content</p>
-                <p class="text-xs text-zinc-500 dark:text-zinc-400">Content Reviewer, 10 Minute School · Instructor, Udvash Academic</p>
+                <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-400">Content Reviewer, 10 Minute School · Instructor, Udvash.</p>
               </li>
             </ul>
           </article>
 
           <!-- Skills & Tools -->
-          <article class="card">
+          <article class="bg-white p-6 dark:bg-zinc-950">
             <div class="card-icon">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m14.5 5.5 4 4M3 21l4-1 11-11a2.83 2.83 0 0 0-4-4L3 16l-1 4Z"/></svg>
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m14.5 5.5 4 4M3 21l4-1 11-11a2.83 2.83 0 0 0-4-4L3 16l-1 4Z"/></svg>
             </div>
-            <h3 class="mt-4 font-serif text-lg font-semibold">Skills &amp; Tools</h3>
-            <ul class="mt-3 space-y-3 text-left">
+            <h3 class="mt-4 font-display text-lg font-bold">Skills &amp; Tools</h3>
+            <ul class="mt-3 space-y-3">
               <li>
                 <p class="text-sm font-semibold">Mechanical testing</p>
-                <p class="text-xs text-zinc-500 dark:text-zinc-400">Tensile, compression, fatigue &amp; hardness (Rockwell, Brinell, Vickers)</p>
+                <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-400">Tensile, compression, fatigue &amp; hardness (Rockwell, Brinell, Vickers).</p>
               </li>
               <li>
                 <p class="text-sm font-semibold">Characterization</p>
-                <p class="text-xs text-zinc-500 dark:text-zinc-400">Metallography, microstructure, XRD, FTIR, DSC/TGA, impedance spectroscopy</p>
+                <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-400">Metallography, microstructure, XRD, FTIR, DSC/TGA, impedance spectroscopy.</p>
               </li>
               <li>
-                <p class="text-sm font-semibold">Processing</p>
-                <p class="text-xs text-zinc-500 dark:text-zinc-400">Casting, rolling, extrusion, welding, ceramic processing (sintering, ball milling)</p>
-              </li>
-              <li>
-                <p class="text-sm font-semibold">Software</p>
-                <p class="text-xs text-zinc-500 dark:text-zinc-400">MATLAB, OriginPro, CES EduPack</p>
+                <p class="text-sm font-semibold">Processing &amp; software</p>
+                <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-400">Casting, rolling, extrusion, welding, sintering · MATLAB, OriginPro, CES EduPack.</p>
               </li>
             </ul>
           </article>
 
-          <!-- Leadership & Volunteering -->
-          <article class="card">
+          <!-- Leadership -->
+          <article class="bg-white p-6 dark:bg-zinc-950">
             <div class="card-icon">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-4.35-9.5-8.5C.5 9 2.5 5.5 6 5.5c2 0 3.2 1.1 4 2.3.8-1.2 2-2.3 4-2.3 3.5 0 5.5 3.5 3.5 7C19 16.65 12 21 12 21Z"/></svg>
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M10 10a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm11 10v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg>
             </div>
-            <h3 class="mt-4 font-serif text-lg font-semibold">Leadership &amp; Volunteering</h3>
-            <ul class="mt-3 space-y-3 text-left">
+            <h3 class="mt-4 font-display text-lg font-bold">Leadership</h3>
+            <ul class="mt-3 space-y-3">
               <li>
-                <p class="text-sm font-semibold">Vice President · BUET Career Club <span class="font-normal text-zinc-400">· 4 yrs</span></p>
-                <p class="text-xs text-zinc-500 dark:text-zinc-400">Marketing, sponsorship, management &amp; team leadership</p>
+                <p class="text-sm font-semibold">Vice President <span class="text-zinc-400">/ 4 yrs</span></p>
+                <p class="meta-mono mt-0.5">BUET Career Club</p>
+                <p class="mt-1 text-xs text-zinc-500 dark:text-zinc-400">Marketing, sponsorship, management &amp; team leadership.</p>
               </li>
               <li>
-                <p class="text-sm font-semibold">Head, Blood Mgmt &amp; Ambassador · Genesis Foundation <span class="font-normal text-zinc-400">· 2 yrs</span></p>
-                <p class="text-xs text-zinc-500 dark:text-zinc-400">Led the blood-management unit &amp; campus ambassador team</p>
+                <p class="text-sm font-semibold">Head, Blood Mgmt &amp; Ambassador <span class="text-zinc-400">/ 2 yrs</span></p>
+                <p class="meta-mono mt-0.5">Genesis Foundation</p>
               </li>
               <li>
-                <p class="text-sm font-semibold">Campus Ambassador · Teach For Bangladesh <span class="font-normal text-zinc-400">· 2 yrs</span></p>
-                <p class="text-xs text-zinc-500 dark:text-zinc-400">Education &amp; mentorship outreach</p>
+                <p class="text-sm font-semibold">Campus Ambassador <span class="text-zinc-400">/ 2 yrs</span></p>
+                <p class="meta-mono mt-0.5">Teach For Bangladesh</p>
               </li>
             </ul>
           </article>
@@ -338,99 +291,86 @@
     </section>
 
     <!-- ================================================================ -->
-    <!-- RESEARCH / PUBLICATIONS                                          -->
+    <!-- RESEARCH / PROJECTS                                              -->
     <!-- ================================================================ -->
-    <section id="research" class="scroll-mt-20 py-20">
+    <section id="research" class="scroll-mt-20 border-b border-zinc-200 py-20 dark:border-zinc-800">
       <div class="mx-auto max-w-content px-5 lg:px-8">
-        <div class="reveal mx-auto max-w-3xl text-center">
-          <p class="section-eyebrow">Research</p>
-          <h2 class="section-title">Research &amp; Projects</h2>
-          <p class="mt-3 text-zinc-600 dark:text-zinc-300">
-            My published thesis plus selected engineering projects and case studies.
-          </p>
+        <div class="reveal max-w-3xl">
+          <p class="kicker"><span class="kicker-num">02</span> / Research &amp; Projects</p>
+          <h2 class="section-title">Published thesis &amp; engineering projects</h2>
         </div>
 
         <div class="reveal mt-12 grid gap-6 md:grid-cols-2">
 
-          <!-- FEATURED: SSRN paper (spans full width) -->
-          <article class="card md:col-span-2 md:flex md:items-start md:gap-6 border-lavender-200 dark:border-lavender-900/60">
-            <div class="hidden shrink-0 md:block">
-              <div class="grid h-16 w-16 place-items-center rounded-2xl bg-lavender-500 text-white">
-                <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.25c-1.5-1.2-3.5-1.75-5.5-1.5v12c2-.25 4 .3 5.5 1.5m0-12c1.5-1.2 3.5-1.75 5.5-1.5v12c-2-.25-4 .3-5.5 1.5m0-12v12"/></svg>
-              </div>
+          <!-- FEATURED publication -->
+          <article class="card md:col-span-2 border-l-2 border-l-steel-500">
+            <div class="flex items-start justify-between gap-4">
+              <span class="inline-flex items-center gap-1.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-hazard-600 dark:text-hazard-400">★ Featured · Publication</span>
+              <span class="meta-mono">SSRN · 2026</span>
             </div>
-            <div class="md:flex-1">
-              <span class="inline-flex items-center gap-1 rounded-full bg-lavender-100 px-2.5 py-0.5 text-xs font-semibold text-lavender-700 dark:bg-lavender-900/40 dark:text-lavender-200">★ Featured</span>
-              <h3 class="mt-2 font-serif text-xl font-semibold leading-snug">
-                Effect of Calcium (Ca) Doping on the Dielectric Properties of Barium Titanate (BaTiO<sub>3</sub>)
-              </h3>
-              <p class="mt-1 text-sm font-medium text-lavender-700 dark:text-lavender-300">
-                S. Ainan, A. N. Ushna, M. M. Rahman · ICME, BUET — via SSRN · 2026
-              </p>
-              <p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
-                Undergraduate thesis on how calcium (Ca) addition influences the dielectric
-                properties of barium titanate (BaTiO<sub>3</sub>), a widely used perovskite ceramic.
-                Presented at ICME (International Conference on Mechanical Engineering), BUET.
-                <span class="block mt-1 text-xs text-zinc-500 dark:text-zinc-400">Supervisor: Md. Miftaur Rahman, Assistant Professor, Dept. of MME, BUET.</span>
-              </p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6215898" target="_blank" rel="noopener noreferrer" class="pub-btn pub-btn-primary">Read on SSRN</a>
-                <a href="https://share.google/XKenUMCxASmgEXVwu" target="_blank" rel="noopener noreferrer" class="pub-btn">Google Scholar</a>
-                <a href="https://share.google/0mQhjcECUKkf9KYYe" target="_blank" rel="noopener noreferrer" class="pub-btn">ResearchGate</a>
-              </div>
+            <h3 class="mt-3 font-display text-xl font-bold leading-snug">
+              Effect of Calcium (Ca) Doping on the Dielectric Properties of Barium Titanate (BaTiO<sub>3</sub>)
+            </h3>
+            <p class="meta-mono mt-1.5">S. Ainan · A. N. Ushna · M. M. Rahman — ICME, BUET</p>
+            <p class="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              Undergraduate thesis on how calcium addition influences the dielectric properties of
+              barium titanate (BaTiO<sub>3</sub>), a widely used perovskite ceramic. Presented at the
+              International Conference on Mechanical Engineering (ICME), BUET.
+              <span class="meta-mono mt-2 block normal-case">Supervisor: Md. Miftaur Rahman, Assistant Professor, Dept. of MME, BUET.</span>
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6215898" target="_blank" rel="noopener noreferrer" class="pub-btn pub-btn-primary">Read on SSRN</a>
+              <a href="https://share.google/XKenUMCxASmgEXVwu" target="_blank" rel="noopener noreferrer" class="pub-btn">Scholar</a>
+              <a href="https://share.google/0mQhjcECUKkf9KYYe" target="_blank" rel="noopener noreferrer" class="pub-btn">ResearchGate</a>
             </div>
           </article>
 
-          <!-- Projects (real, from CV) -->
+          <!-- Projects -->
           <article class="card">
-            <h3 class="font-serif text-lg font-semibold leading-snug">Failure Analysis of Grade B500DWR TMT Steel Rebar</h3>
-            <p class="mt-1 text-sm font-medium text-lavender-700 dark:text-lavender-300">Project · Rebend-test failure investigation</p>
-            <p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
-              Traced the root cause of rebar failure in the rebend test through visual inspection,
-              chemical composition, microstructure, and mechanical testing — finding that faulty rib
-              design produced brittle zones during quenching.
+            <p class="meta-mono">Project · Failure analysis</p>
+            <h3 class="mt-2 font-display text-lg font-bold leading-snug">Failure Analysis of Grade B500DWR TMT Steel Rebar</h3>
+            <p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              Traced rebend-test failure via visual inspection, chemical composition, microstructure
+              and mechanical testing — faulty rib design produced brittle zones during quenching.
             </p>
           </article>
 
           <article class="card">
-            <h3 class="font-serif text-lg font-semibold leading-snug">Accelerated Thinning in a High-Pressure Gas Pipeline</h3>
-            <p class="mt-1 text-sm font-medium text-lavender-700 dark:text-lavender-300">Project · Service-life investigation</p>
-            <p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+            <p class="meta-mono">Project · Service-life study</p>
+            <h3 class="mt-2 font-display text-lg font-bold leading-snug">Accelerated Thinning in a High-Pressure Gas Pipeline</h3>
+            <p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
               Investigated why a high-pressure gas pipeline in Rajshahi saw its service life fall
               from 10 years to 4 due to thinning effects.
             </p>
           </article>
 
           <article class="card">
-            <h3 class="font-serif text-lg font-semibold leading-snug">Heat-Treatment Design for 304 Stainless Steel</h3>
-            <p class="mt-1 text-sm font-medium text-lavender-700 dark:text-lavender-300">Case study · Aerospace application</p>
-            <p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+            <p class="meta-mono">Case study · Aerospace</p>
+            <h3 class="mt-2 font-display text-lg font-bold leading-snug">Heat-Treatment Design for 304 Stainless Steel</h3>
+            <p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
               Designed an optimized heat-treatment cycle for 304 austenitic stainless steel to
               enhance strength and corrosion resistance for aerospace components.
             </p>
           </article>
 
           <article class="card">
-            <h3 class="font-serif text-lg font-semibold leading-snug">Design of a Cement Production Plant</h3>
-            <p class="mt-1 text-sm font-medium text-lavender-700 dark:text-lavender-300">Project · Plant design</p>
-            <p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+            <p class="meta-mono">Project · Plant design</p>
+            <h3 class="mt-2 font-display text-lg font-bold leading-snug">Design of a Cement Production Plant</h3>
+            <p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
               End-to-end plant layout: site selection, plot plan, equipment design, environmental
               factors, and economic feasibility.
             </p>
           </article>
         </div>
 
-        <!-- View-all links -->
-        <div class="reveal mt-10 flex flex-wrap justify-center gap-4">
-          <a href="https://share.google/XKenUMCxASmgEXVwu" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-2 text-sm font-semibold text-lavender-700 hover:text-lavender-900 dark:text-lavender-300 dark:hover:text-lavender-100">
-            View all on Google Scholar
-            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
+        <div class="reveal mt-8 flex flex-wrap gap-x-6 gap-y-2">
+          <a href="https://share.google/XKenUMCxASmgEXVwu" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-steel-600 hover:text-steel-800 dark:text-steel-300 dark:hover:text-steel-100">
+            All on Google Scholar
+            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
           </a>
-          <a href="https://share.google/0mQhjcECUKkf9KYYe" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-2 text-sm font-semibold text-lavender-700 hover:text-lavender-900 dark:text-lavender-300 dark:hover:text-lavender-100">
-            View all on ResearchGate
-            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
+          <a href="https://share.google/0mQhjcECUKkf9KYYe" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-steel-600 hover:text-steel-800 dark:text-steel-300 dark:hover:text-steel-100">
+            All on ResearchGate
+            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
           </a>
         </div>
       </div>
@@ -439,30 +379,26 @@
     <!-- ================================================================ -->
     <!-- MEDIA / CONTENT                                                  -->
     <!-- ================================================================ -->
-    <section id="media" class="scroll-mt-20 bg-lavender-50/60 py-20 dark:bg-zinc-900/40">
+    <section id="media" class="scroll-mt-20 border-b border-zinc-200 py-20 dark:border-zinc-800">
       <div class="mx-auto max-w-content px-5 lg:px-8">
-        <div class="reveal mx-auto max-w-3xl text-center">
-          <p class="section-eyebrow">Media</p>
-          <h2 class="section-title">Content &amp; Creations</h2>
-          <p class="mt-3 text-zinc-600 dark:text-zinc-300">
-            Beyond engineering, I create explainer videos on Bangladesh's governance,
-            constitution, and society. A few recent ones from my YouTube channel:
+        <div class="reveal max-w-3xl">
+          <p class="kicker"><span class="kicker-num">03</span> / Media</p>
+          <h2 class="section-title">Explainers on governance &amp; society</h2>
+          <p class="mt-4 text-zinc-600 dark:text-zinc-400">
+            Beyond engineering, I create explainer videos on Bangladesh's governance, constitution,
+            and society. A few recent ones from my YouTube channel:
           </p>
         </div>
 
-        <!-- Featured YouTube videos (real thumbnails + links from the channel feed).
-             To swap a video, change the watch?v= ID, the /vi/<ID>/ in the <img>, and the title. -->
         <div class="reveal mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-
           <a class="yt-card" href="https://www.youtube.com/watch?v=xGaSgdRTXXw" target="_blank" rel="noopener noreferrer">
             <div class="yt-thumb">
-              <img src="https://i.ytimg.com/vi/xGaSgdRTXXw/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async"
-                   alt="YouTube thumbnail — Design of the State: Constitution of Bangladesh" />
+              <img src="https://i.ytimg.com/vi/xGaSgdRTXXw/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="YouTube thumbnail — Design of the State: Constitution of Bangladesh" />
               <span class="yt-badge" aria-hidden="true"></span>
             </div>
             <div class="p-4">
               <h3 class="line-clamp-2 font-semibold leading-snug">Design of the State: Constitution of Bangladesh</h3>
-              <p class="mt-1.5 flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400">
+              <p class="mt-2 flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-zinc-400">
                 <svg class="h-3.5 w-3.5 text-red-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14C4.5 20.45 12 20.45 12 20.45s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
                 YouTube · 2026
               </p>
@@ -471,13 +407,12 @@
 
           <a class="yt-card" href="https://www.youtube.com/watch?v=WTVPJQMSn7c" target="_blank" rel="noopener noreferrer">
             <div class="yt-thumb">
-              <img src="https://i.ytimg.com/vi/WTVPJQMSn7c/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async"
-                   alt="YouTube thumbnail — The Bangladesh Constitution: Summary in English" />
+              <img src="https://i.ytimg.com/vi/WTVPJQMSn7c/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="YouTube thumbnail — The Bangladesh Constitution: Summary in English" />
               <span class="yt-badge" aria-hidden="true"></span>
             </div>
             <div class="p-4">
               <h3 class="line-clamp-2 font-semibold leading-snug">The Bangladesh Constitution — Summary in English</h3>
-              <p class="mt-1.5 flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400">
+              <p class="mt-2 flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-zinc-400">
                 <svg class="h-3.5 w-3.5 text-red-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14C4.5 20.45 12 20.45 12 20.45s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
                 YouTube · 2026
               </p>
@@ -486,13 +421,12 @@
 
           <a class="yt-card" href="https://www.youtube.com/watch?v=gFeBrZykvY8" target="_blank" rel="noopener noreferrer">
             <div class="yt-thumb">
-              <img src="https://i.ytimg.com/vi/gFeBrZykvY8/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async"
-                   alt="YouTube thumbnail — Statecraft &amp; Architecture of Bangladesh" />
+              <img src="https://i.ytimg.com/vi/gFeBrZykvY8/hqdefault.jpg" width="480" height="360" loading="lazy" decoding="async" alt="YouTube thumbnail — Statecraft &amp; Architecture of Bangladesh" />
               <span class="yt-badge" aria-hidden="true"></span>
             </div>
             <div class="p-4">
               <h3 class="line-clamp-2 font-semibold leading-snug">Statecraft &amp; Architecture of Bangladesh</h3>
-              <p class="mt-1.5 flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400">
+              <p class="mt-2 flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-zinc-400">
                 <svg class="h-3.5 w-3.5 text-red-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14C4.5 20.45 12 20.45 12 20.45s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
                 YouTube · 2026
               </p>
@@ -500,17 +434,10 @@
           </a>
         </div>
 
-        <!-- Social links -->
-        <div class="reveal mt-10 flex flex-wrap justify-center gap-3">
-          <a href="https://youtube.com/@sartazainan1783" target="_blank" rel="noopener noreferrer" class="media-link">
-            <span data-social="youtube" class="media-link-icon"></span> YouTube Channel
-          </a>
-          <a href="https://instagram.com/sartaz.ainan" target="_blank" rel="noopener noreferrer" class="media-link">
-            <span data-social="instagram" class="media-link-icon"></span> Instagram
-          </a>
-          <a href="https://share.google/tVUie7xv2gN7bTM7R" target="_blank" rel="noopener noreferrer" class="media-link">
-            <span data-social="facebook" class="media-link-icon"></span> Facebook
-          </a>
+        <div class="reveal mt-10 flex flex-wrap gap-3">
+          <a href="https://youtube.com/@sartazainan1783" target="_blank" rel="noopener noreferrer" class="media-link"><span data-social="youtube" class="media-link-icon"></span> YouTube</a>
+          <a href="https://instagram.com/sartaz.ainan" target="_blank" rel="noopener noreferrer" class="media-link"><span data-social="instagram" class="media-link-icon"></span> Instagram</a>
+          <a href="https://share.google/tVUie7xv2gN7bTM7R" target="_blank" rel="noopener noreferrer" class="media-link"><span data-social="facebook" class="media-link-icon"></span> Facebook</a>
         </div>
       </div>
     </section>
@@ -520,75 +447,51 @@
     <!-- ================================================================ -->
     <section id="contact" class="scroll-mt-20 py-20">
       <div class="mx-auto max-w-content px-5 lg:px-8">
-        <div class="reveal mx-auto max-w-2xl text-center">
-          <p class="section-eyebrow">Contact</p>
-          <h2 class="section-title">Let's connect</h2>
-          <p class="mt-3 text-zinc-600 dark:text-zinc-300">
-            Whether you're a peer, collaborator, or recruiter — I'd love to hear from you.
+        <div class="reveal max-w-2xl">
+          <p class="kicker"><span class="kicker-num">04</span> / Contact</p>
+          <h2 class="section-title">Let's build something</h2>
+          <p class="mt-4 text-zinc-600 dark:text-zinc-400">
+            Open to roles and collaborations in steel manufacturing, quality assurance, supply-chain
+            operations, and industrial production. Reach out — I usually reply fast on WhatsApp.
           </p>
-
-          <!-- Email buttons: professional (primary) + institutional (secondary) -->
-          <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <a href="mailto:sartazainan@gmail.com"
-               class="inline-flex items-center gap-2 rounded-full bg-lavender-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-lavender-500/25 transition hover:bg-lavender-600">
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9 6 9-6M4 5h16v14H4z"/></svg>
-              sartazainan@gmail.com
-            </a>
-            <a href="mailto:1811035@mme.buet.ac.bd"
-               class="inline-flex items-center gap-2 rounded-full border border-zinc-300 px-6 py-3 text-sm font-semibold text-ink transition hover:border-lavender-400 hover:text-lavender-700 dark:border-zinc-700 dark:text-zinc-100 dark:hover:border-lavender-500 dark:hover:text-lavender-300">
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14 3 9l9-5 9 5-9 5Zm0 0v6m6-7.5V17a6 3 0 0 1-12 0v-3.5"/></svg>
-              1811035@mme.buet.ac.bd
-            </a>
-          </div>
-
-          <!-- Phone + location -->
-          <div class="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-zinc-600 dark:text-zinc-300">
-            <a href="tel:+8801553064653" class="inline-flex items-center gap-1.5 hover:text-lavender-700 dark:hover:text-lavender-300">
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 0 1 2-2h2l2 5-2 1a11 11 0 0 0 5 5l1-2 5 2v2a2 2 0 0 1-2 2A16 16 0 0 1 3 5Z"/></svg>
-              +880 1553-064653
-            </a>
-            <span class="inline-flex items-center gap-1.5">
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-6-5.5-6-10a6 6 0 1 1 12 0c0 4.5-6 10-6 10Z"/><circle cx="12" cy="11" r="2"/></svg>
-              Dhaka, Bangladesh
-            </span>
-          </div>
-
-          <!-- social links -->
-          <ul class="mt-6 flex flex-wrap items-center justify-center gap-2" aria-label="Social profiles">
-            <li><a class="social-link" data-social="linkedin"    href="https://www.linkedin.com/in/sartaz-ainan-7b9882192" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a></li>
-            <li><a class="social-link" data-social="scholar"     href="https://share.google/XKenUMCxASmgEXVwu" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"></a></li>
-            <li><a class="social-link" data-social="researchgate" href="https://share.google/0mQhjcECUKkf9KYYe" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate"></a></li>
-            <li><a class="social-link" data-social="youtube"     href="https://youtube.com/@sartazainan1783" target="_blank" rel="noopener noreferrer" aria-label="YouTube"></a></li>
-            <li><a class="social-link" data-social="instagram"   href="https://instagram.com/sartaz.ainan" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a></li>
-            <li><a class="social-link" data-social="facebook"    href="https://share.google/tVUie7xv2gN7bTM7R" target="_blank" rel="noopener noreferrer" aria-label="Facebook"></a></li>
-          </ul>
         </div>
 
-        <!-- Optional contact form (Formspree) -->
-        <!-- TODO: replace YOUR_FORM_ID with your Formspree endpoint (https://formspree.io). -->
-        <form id="contact-form"
-              action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
-              class="reveal mx-auto mt-12 max-w-xl rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-8">
-          <div class="grid gap-4 sm:grid-cols-2">
-            <div>
-              <label for="name" class="form-label">Name</label>
-              <input id="name" name="name" type="text" required autocomplete="name" class="form-input" placeholder="Your name" />
-            </div>
-            <div>
-              <label for="email" class="form-label">Email</label>
-              <input id="email" name="email" type="email" required autocomplete="email" class="form-input" placeholder="you@example.com" />
-            </div>
+        <!-- Primary actions -->
+        <div class="reveal mt-8 flex flex-wrap gap-3">
+          <a href="https://wa.me/8801553064653?text=Hi%20Sartaz%2C%20I%20saw%20your%20portfolio%20and%20wanted%20to%20connect."
+             target="_blank" rel="noopener noreferrer" class="btn btn-wa">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.06 24l1.68-6.13A11.86 11.86 0 0 1 .16 11.9C.16 5.33 5.5 0 12.07 0a11.82 11.82 0 0 1 8.41 3.49 11.82 11.82 0 0 1 3.48 8.42c0 6.57-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.69-1.45L.06 24zM6.6 20.13l.36.21a9.86 9.86 0 0 0 5.02 1.38h.01c5.45 0 9.9-4.44 9.9-9.9a9.86 9.86 0 0 0-2.9-7.01 9.82 9.82 0 0 0-7-2.9c-5.46 0-9.9 4.44-9.9 9.9a9.84 9.84 0 0 0 1.51 5.26l.24.38-1 3.63 3.76-.95zm11.39-5.55c-.07-.12-.27-.2-.56-.34-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.66.15-.2.3-.76.96-.93 1.16-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.66-1.6-.9-2.19-.24-.57-.48-.5-.66-.5l-.56-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41z"/></svg>
+            WhatsApp Me
+          </a>
+          <a href="mailto:sartazainan@gmail.com" class="btn btn-outline">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9 6 9-6M4 5h16v14H4z"/></svg>
+            Email
+          </a>
+        </div>
+
+        <!-- Detail grid -->
+        <div class="reveal mt-10 grid gap-px border border-zinc-200 bg-zinc-200 dark:border-zinc-800 dark:bg-zinc-800 sm:grid-cols-2">
+          <div class="bg-white p-5 dark:bg-zinc-950">
+            <p class="meta-mono">Email</p>
+            <a href="mailto:sartazainan@gmail.com" class="mt-1 block text-sm font-medium hover:text-steel-600 dark:hover:text-steel-300">sartazainan@gmail.com</a>
+            <a href="mailto:1811035@mme.buet.ac.bd" class="mt-1 block text-sm text-zinc-500 hover:text-steel-600 dark:text-zinc-400 dark:hover:text-steel-300">1811035@mme.buet.ac.bd</a>
           </div>
-          <div class="mt-4">
-            <label for="message" class="form-label">Message</label>
-            <textarea id="message" name="message" rows="4" required class="form-input resize-y" placeholder="Write your message…"></textarea>
+          <div class="bg-white p-5 dark:bg-zinc-950">
+            <p class="meta-mono">Phone / Location</p>
+            <a href="tel:+8801553064653" class="mt-1 block text-sm font-medium hover:text-steel-600 dark:hover:text-steel-300">+880 1553-064653</a>
+            <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Dhaka, Bangladesh</p>
           </div>
-          <button type="submit"
-                  class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-lavender-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-lavender-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lavender-500">
-            Send Message
-          </button>
-          <p id="form-status" role="status" aria-live="polite" class="mt-3 text-center text-sm"></p>
-        </form>
+        </div>
+
+        <!-- Socials -->
+        <ul class="reveal mt-8 flex flex-wrap items-center gap-2" aria-label="Social profiles">
+          <li><a class="social-link" data-social="linkedin"     href="https://www.linkedin.com/in/sartaz-ainan-7b9882192" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a></li>
+          <li><a class="social-link" data-social="scholar"      href="https://share.google/XKenUMCxASmgEXVwu" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"></a></li>
+          <li><a class="social-link" data-social="researchgate" href="https://share.google/0mQhjcECUKkf9KYYe" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate"></a></li>
+          <li><a class="social-link" data-social="youtube"      href="https://youtube.com/@sartazainan1783" target="_blank" rel="noopener noreferrer" aria-label="YouTube"></a></li>
+          <li><a class="social-link" data-social="instagram"    href="https://instagram.com/sartaz.ainan" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a></li>
+          <li><a class="social-link" data-social="facebook"     href="https://share.google/tVUie7xv2gN7bTM7R" target="_blank" rel="noopener noreferrer" aria-label="Facebook"></a></li>
+        </ul>
       </div>
     </section>
   </main>
@@ -596,31 +499,21 @@
   <!-- ================================================================ -->
   <!-- FOOTER                                                            -->
   <!-- ================================================================ -->
-  <footer class="border-t border-zinc-200 py-10 dark:border-zinc-800">
-    <div class="mx-auto flex max-w-content flex-col items-center gap-6 px-5 lg:px-8 md:flex-row md:justify-between">
-      <p class="flex items-center gap-2 font-serif text-sm">
-        <span class="grid h-7 w-7 place-items-center rounded-md bg-lavender-500 text-xs font-bold text-white">SA</span>
+  <footer class="border-t border-zinc-200 py-8 dark:border-zinc-800">
+    <div class="mx-auto flex max-w-content flex-col items-center gap-4 px-5 lg:px-8 md:flex-row md:justify-between">
+      <p class="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+        <span class="grid h-6 w-6 place-items-center bg-steel-600 font-display text-[10px] font-bold text-white">SA</span>
         © <span id="year"></span> Sartaz Ainan
       </p>
-
-      <nav class="flex gap-5 text-sm text-zinc-500 dark:text-zinc-400" aria-label="Footer">
-        <a href="#about" class="hover:text-lavender-700 dark:hover:text-lavender-300">About</a>
-        <a href="#research" class="hover:text-lavender-700 dark:hover:text-lavender-300">Research</a>
-        <a href="#media" class="hover:text-lavender-700 dark:hover:text-lavender-300">Media</a>
-        <a href="#contact" class="hover:text-lavender-700 dark:hover:text-lavender-300">Contact</a>
+      <nav class="flex gap-5 font-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400" aria-label="Footer">
+        <a href="#about" class="hover:text-steel-600 dark:hover:text-steel-300">About</a>
+        <a href="#research" class="hover:text-steel-600 dark:hover:text-steel-300">Research</a>
+        <a href="#media" class="hover:text-steel-600 dark:hover:text-steel-300">Media</a>
+        <a href="#contact" class="hover:text-steel-600 dark:hover:text-steel-300">Contact</a>
       </nav>
-
-      <ul class="flex items-center gap-2" aria-label="Social profiles">
-        <li><a class="social-link social-link-sm" data-social="linkedin"    href="https://www.linkedin.com/in/sartaz-ainan-7b9882192" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a></li>
-        <li><a class="social-link social-link-sm" data-social="scholar"     href="https://share.google/XKenUMCxASmgEXVwu" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar"></a></li>
-        <li><a class="social-link social-link-sm" data-social="youtube"     href="https://youtube.com/@sartazainan1783" target="_blank" rel="noopener noreferrer" aria-label="YouTube"></a></li>
-        <li><a class="social-link social-link-sm" data-social="instagram"   href="https://instagram.com/sartaz.ainan" target="_blank" rel="noopener noreferrer" aria-label="Instagram"></a></li>
-        <li><a class="social-link social-link-sm" data-social="facebook"    href="https://share.google/tVUie7xv2gN7bTM7R" target="_blank" rel="noopener noreferrer" aria-label="Facebook"></a></li>
-      </ul>
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script src="js/icons.js"></script>
   <script src="js/main.js"></script>
 </body>

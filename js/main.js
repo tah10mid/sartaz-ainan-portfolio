@@ -98,41 +98,5 @@
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  /* ---- Contact form (Formspree, AJAX) -------------------------------- */
-  const form = document.getElementById('contact-form');
-  const status = document.getElementById('form-status');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      // If the endpoint is still the placeholder, let the user know instead
-      // of POSTing to a broken URL.
-      if (form.action.indexOf('YOUR_FORM_ID') !== -1) {
-        e.preventDefault();
-        setStatus('⚠ Contact form not configured yet (set your Formspree endpoint).', 'text-amber-600');
-        return;
-      }
-      e.preventDefault();
-      setStatus('Sending…', 'text-zinc-500');
-      fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' },
-      })
-        .then(function (res) {
-          if (res.ok) {
-            form.reset();
-            setStatus('✓ Thanks! Your message has been sent.', 'text-green-600');
-          } else {
-            setStatus('✗ Something went wrong. Please email me directly.', 'text-red-600');
-          }
-        })
-        .catch(function () {
-          setStatus('✗ Network error. Please email me directly.', 'text-red-600');
-        });
-    });
-  }
-  function setStatus(msg, cls) {
-    if (!status) return;
-    status.textContent = msg;
-    status.className = 'mt-3 text-center text-sm ' + cls;
-  }
+  // Contact is handled by direct WhatsApp / email / phone links — no form JS needed.
 })();

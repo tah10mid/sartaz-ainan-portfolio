@@ -7,9 +7,10 @@ Metallurgical Engineer and content creator. Built with semantic **HTML5**, **Tai
 > **Hosting needs no build step:** the compiled `css/app.css` is committed, so you can drag
 > the folder to any static host as-is. The build step is only needed when you *change styles*.
 
-> **Design:** light theme, lavender/violet accent (`#8B7BB8`) pulled from the shirt in the
-> hero photo, elegant serif headings (Fraunces) + clean sans body (Inter), soft shadows,
-> rounded cards, scroll-reveal animations, scroll-spy nav, and an optional dark mode.
+> **Design:** industrial / engineering theme — steel-blue (`#3e6e9c`) + amber accents,
+> sharp corners, hairline borders, a blueprint grid motif, and monospaced technical labels.
+> Display type **Space Grotesk**, body **Inter**, labels **JetBrains Mono**. Auto light/dark
+> (follows the device, with a manual toggle), scroll-reveal animations, and scroll-spy nav.
 
 ---
 
@@ -135,7 +136,9 @@ blocked, so a few fields remain `TODO`:
 | Research & Projects          | ✅ Filled — thesis (SSRN/ICME) + 4 projects                  |
 | Contact emails / phone / location | ✅ Filled — emails, +880 1553-064653, Dhaka, Bangladesh |
 | Media → YouTube cards        | ✅ Filled — 3 real videos (thumbnails pulled from the channel feed) |
-| Contact form `action`        | **TODO** — your Formspree endpoint (`YOUR_FORM_ID`)         |
+| Contact                      | ✅ WhatsApp button (+880 1553-064653) + email/phone/location |
+
+Everything is filled in — no remaining placeholders.
 
 > **Privacy:** full street/permanent home addresses and your referees' phone numbers were
 > intentionally left off this public site. Add them only if you really want them public.
